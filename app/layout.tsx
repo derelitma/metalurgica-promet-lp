@@ -3,78 +3,74 @@ import { Montserrat, Open_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const montserrat = Montserrat({ 
+const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font-montserrat',
   display: 'swap',
+  weight: ['400', '500', '600', '700', '800'],
 })
 
-const openSans = Open_Sans({ 
+const openSans = Open_Sans({
   subsets: ['latin'],
   variable: '--font-open-sans',
   display: 'swap',
+  weight: ['400', '500', '600', '700'],
 })
 
 export const metadata: Metadata = {
-  title: 'Metalúrgica Promet | 60 Años de Excelencia en Soldadura y Mecanizado Industrial',
-  description: 'Líder en soldadura industrial, mecanizado de precisión, fabricación de estructuras metálicas y mantenimiento industrial en Argentina. 60 años de experiencia, calidad certificada y atención personalizada.',
+  title: 'Metalúrgica Promet LP | Portones, Puertas y Estructuras Metálicas a Medida',
+  description:
+    'Fabricación e instalación de portones, puertas, ventanas, escaleras y techos metálicos a medida en La Plata. Más de 60 años de experiencia. Presupuesto gratis en 24/48hs.',
   keywords: [
-    'metalúrgica argentina',
-    'soldadura industrial',
-    'mecanizado de precisión',
+    'portones metálicos La Plata',
+    'puertas metálicas',
+    'ventanas metálicas',
+    'escaleras metálicas',
+    'techos metálicos',
     'estructuras metálicas',
-    'mantenimiento industrial',
-    'fabricación metal',
-    'taller metalúrgico',
-    'soldadura MIG',
-    'soldadura TIG',
-    'torno CNC',
-    'fresado industrial',
+    'carpintería metálica',
+    'trabajos en metal La Plata',
   ],
-  authors: [{ name: 'Metalúrgica Promet' }],
-  creator: 'Metalúrgica Promet',
-  publisher: 'Metalúrgica Promet',
-  robots: {
-    index: true,
-    follow: true,
+  authors: [{ name: 'Metalúrgica Promet LP' }],
+  creator: 'Metalúrgica Promet LP',
+  publisher: 'Metalúrgica Promet LP',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: 'https://metalurgicapromet.com.ar',
   },
   openGraph: {
     type: 'website',
     locale: 'es_AR',
     url: 'https://metalurgicapromet.com.ar',
-    siteName: 'Metalúrgica Promet',
-    title: 'Metalúrgica Promet | 60 Años de Excelencia Industrial',
-    description: 'Líder en soldadura industrial, mecanizado de precisión y fabricación de estructuras metálicas. 60 años transformando metal en soluciones.',
+    siteName: 'Metalúrgica Promet LP',
+    title: 'Metalúrgica Promet LP | Portones y Estructuras Metálicas a Medida',
+    description:
+      'Fabricación e instalación de productos metálicos a medida. 60 años de experiencia en La Plata.',
     images: [
       {
-        url: '/og-image.jpg',
+        url: 'https://metalurgicapromet.com.ar/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Metalúrgica Promet - 60 años de excelencia',
+        alt: 'Metalúrgica Promet LP',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Metalúrgica Promet | 60 Años de Excelencia',
-    description: 'Soldadura industrial, mecanizado de precisión y estructuras metálicas.',
+    site: '@PrometLP',
+    creator: '@PrometLP',
   },
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+  robots: {
+    index: true,
+    follow: true,
+    'max-image-preview': 'large',
+    'max-snippet': -1,
+    'max-video-preview': -1,
+    googleBot: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
   },
 }
 
@@ -83,29 +79,36 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
+  userScalable: true,
+  viewportFit: 'cover',
 }
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  '@id': 'https://metalurgicapromet.com.ar',
-  name: 'Metalúrgica Promet',
-  description: 'Empresa líder en soldadura industrial, mecanizado de precisión, fabricación de estructuras metálicas y mantenimiento industrial con 60 años de experiencia.',
+  '@type': ['LocalBusiness', 'HomeAndConstructionBusiness'],
+  name: 'Metalúrgica Promet LP',
+  alternateName: 'Promet La Plata',
+  description:
+    'Fabricación e instalación de portones, puertas, ventanas, escaleras y techos metálicos a medida en La Plata. Más de 60 años de trayectoria.',
+  foundingDate: '1960',
   url: 'https://metalurgicapromet.com.ar',
-  telephone: '+54-11-1234-5678',
+  telephone: '+5492215551234',
   email: 'info@metalurgicapromet.com.ar',
+  priceRange: '$$',
+  currenciesAccepted: 'ARS',
+  paymentAccepted: ['Cash', 'Transfer', 'CreditCard'],
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Av. Industrial 1234',
-    addressLocality: 'Buenos Aires',
+    streetAddress: 'Calle 43 entre 148 y 149',
+    addressLocality: 'La Plata',
     addressRegion: 'Buenos Aires',
-    postalCode: '1234',
+    postalCode: '1900',
     addressCountry: 'AR',
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: -34.6037,
-    longitude: -58.3816,
+    latitude: -34.9214,
+    longitude: -57.9545,
   },
   openingHoursSpecification: [
     {
@@ -121,34 +124,70 @@ const jsonLd = {
       closes: '13:00',
     },
   ],
-  priceRange: '$$',
-  image: 'https://metalurgicapromet.com.ar/og-image.jpg',
+  areaServed: [
+    { '@type': 'City', name: 'La Plata' },
+    { '@type': 'City', name: 'Berisso' },
+    { '@type': 'City', name: 'Ensenada' },
+    { '@type': 'Place', name: 'GBA Sur' },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Servicios de carpintería metálica',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Portones metálicos a medida',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Puertas metálicas',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Ventanas metálicas',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Escaleras metálicas',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Techos y estructuras metálicas',
+        },
+      },
+    ],
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5',
+    reviewCount: '47',
+  },
   sameAs: [
     'https://www.facebook.com/metalurgicapromet',
     'https://www.instagram.com/metalurgicapromet',
-    'https://www.linkedin.com/company/metalurgicapromet',
+    'https://wa.me/5492215551234',
   ],
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    reviewCount: '127',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'Customer Service',
+    telephone: '+5492215551234',
+    areaServed: ['AR'],
+    availableLanguage: ['es'],
   },
-  foundingDate: '1964',
-  numberOfEmployees: {
-    '@type': 'QuantitativeValue',
-    value: '50+',
-  },
-  areaServed: {
-    '@type': 'Country',
-    name: 'Argentina',
-  },
-  serviceType: [
-    'Soldadura Industrial',
-    'Mecanizado de Precisión',
-    'Fabricación de Estructuras Metálicas',
-    'Mantenimiento Industrial',
-    'Corte y Plegado',
-  ],
 }
 
 export default function RootLayout({
@@ -157,14 +196,31 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" className={`${montserrat.variable} ${openSans.variable} bg-background`}>
+    <html
+      lang="es"
+      className={`${montserrat.variable} ${openSans.variable} bg-[#0A0B0D]`}
+      suppressHydrationWarning
+    >
       <head>
+        <meta name="theme-color" content="#003366" />
+        <meta name="color-scheme" content="dark" />
+        <meta name="geo.region" content="AR-B" />
+        <meta name="geo.placename" content="La Plata" />
+        <meta name="geo.position" content="-34.9214;-57.9545" />
+        <meta name="ICBM" content="-34.9214, -57.9545" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://wa.me" />
+        <link rel="dns-prefetch" href="https://wa.me" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="font-serif antialiased">
+      <body
+        className={`font-sans bg-[#0A0B0D] text-white antialiased`}
+        suppressHydrationWarning
+      >
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

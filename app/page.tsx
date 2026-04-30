@@ -14,26 +14,32 @@ import { Footer } from '@/components/footer'
 import { WhatsAppFAB } from '@/components/whatsapp-fab'
 import { BackToTop } from '@/components/back-to-top'
 import { MobileStickyFooter } from '@/components/mobile-sticky-footer'
+import { ExitIntentModal } from '@/components/exit-intent-modal'
+import { ScrollBottomBanner } from '@/components/scroll-bottom-banner'
 
 export default function Home() {
   return (
-    <main>
-      <Navbar />
-      <Hero />
-      <UrgencyMarquee />
-      <Services />
-      <Stats />
-      <WhyUs />
-      <Gallery />
-      <ConversionBand />
-      <Process />
-      <Testimonials />
-      <About />
-      <Contact />
-      <Footer />
-      <WhatsAppFAB />
-      <BackToTop />
-      <MobileStickyFooter />
-    </main>
+    <>
+      <main>
+        <Navbar />
+        <Hero />
+        <UrgencyMarquee />
+        <Services />
+        <Stats />
+        <WhyUs />
+        <Gallery />
+        <ConversionBand />
+        <Process />
+        <Testimonials />
+        <About />
+        <Contact />
+        <Footer />
+        <WhatsAppFAB />
+        <BackToTop />
+        <MobileStickyFooter />
+      </main>
+      <ExitIntentModal />
+      <ScrollBottomBanner />
+    </>
   )
 }

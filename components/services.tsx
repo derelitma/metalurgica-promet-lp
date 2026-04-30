@@ -1,140 +1,188 @@
-'use client'
+'use client';
 
-import { useEffect, useRef, useState } from 'react'
-import { Card, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Flame, Settings, Building2, Wrench, Scissors, ArrowRight } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import { Card, CardContent } from '@/components/ui/card';
+import { ArrowRight } from 'lucide-react';
+import { useWhatsApp } from '@/hooks/use-whatsapp';
 
 const services = [
   {
-    icon: Flame,
-    title: 'Soldadura Industrial',
-    description: 'Soldadura MIG, TIG y arco sumergido. Certificación en soldadura estructural y trabajos de alta precisión para la industria.',
-    features: ['MIG/MAG', 'TIG', 'Arco sumergido', 'Soldadura estructural'],
+    id: 'portones',
+    title: 'Portones Metálicos',
+    description: 'A medida y diseño personalizado. Desde clásicos hasta modernos, con sistemas de automatización.',
+    features: ['Acero inoxidable', 'Automatizados', 'Designs personalizado', 'Garantía 10 años'],
   },
   {
-    icon: Settings,
-    title: 'Mecanizado de Precisión',
-    description: 'Torno CNC, fresado y rectificado de alta precisión. Fabricación de piezas a medida con tolerancias mínimas.',
-    features: ['Torno CNC', 'Fresado', 'Rectificado', 'Piezas a medida'],
+    id: 'puertas',
+    title: 'Puertas Metálicas',
+    description: 'Seguridad y diseño en tus entradas. Resistentes al fuego, blindadas o estándar.',
+    features: ['Blindadas', 'Resistentes al fuego', 'Acústicas', 'Personalizables'],
   },
   {
-    icon: Building2,
-    title: 'Estructuras Metálicas',
-    description: 'Diseño y fabricación de estructuras metálicas para construcción industrial, galpones y naves industriales.',
-    features: ['Galpones', 'Naves industriales', 'Entrepisos', 'Escaleras'],
+    id: 'ventanas',
+    title: 'Ventanas Metálicas',
+    description: 'Luz natural con seguridad. Marco de acero o aluminio, vidrios especializados.',
+    features: ['Doble vidrio', 'Acústicas', 'Cortinas de rol', 'Marcos de acero'],
   },
   {
-    icon: Wrench,
-    title: 'Mantenimiento Industrial',
-    description: 'Servicio de mantenimiento preventivo y correctivo para maquinaria industrial. Respuesta rápida ante emergencias.',
-    features: ['Preventivo', 'Correctivo', 'Emergencias 24/7', 'Paradas programadas'],
+    id: 'escaleras',
+    title: 'Escaleras Metálicas',
+    description: 'Estructurales o decorativas. Interiores y exteriores con máxima seguridad.',
+    features: ['Espirales', 'De caracol', 'Rectas', 'Con pasamanos'],
   },
   {
-    icon: Scissors,
-    title: 'Corte y Plegado',
-    description: 'Corte láser, plasma y oxicorte. Plegado CNC de chapas con precisión milimétrica.',
-    features: ['Corte láser', 'Plasma CNC', 'Oxicorte', 'Plegado CNC'],
+    id: 'techos',
+    title: 'Techos y Estructuras',
+    description: 'Cobertizos, galpones y estructuras. Soluciones resistentes para cualquier clima.',
+    features: ['Cobertizos', 'Galpones', 'Techos retráctiles', 'Pérgolas'],
   },
-]
+];
 
-function ServiceCard({ service, index }: { service: typeof services[0]; index: number }) {
-  const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
+function ServiceCard({
+  service,
+  index,
+}: {
+  service: (typeof services)[0];
+  index: number;
+}) {
+  const [isVisible, setIsVisible] = useState(false);
+  const [rotation, setRotation] = useState({ x: 0, y: 0 });
+  const cardRef = useRef<HTMLDivElement>(null);
+  const wa = useWhatsApp(service.id as any);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
+          setIsVisible(true);
         }
       },
       { threshold: 0.2 }
-    )
+    );
 
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [])
+    if (cardRef.current) observer.observe(cardRef.current);
+    return () => observer.disconnect();
+  }, []);
 
-  const Icon = service.icon
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+
+    const rect = cardRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const x = e.clientX - centerX;
+    const y = e.clientY - centerY;
+
+    const rotateX = (y / rect.height) * -5;
+    const rotateY = (x / rect.width) * 5;
+
+    setRotation({ x: rotateX, y: rotateY });
+  };
+
+  const handleMouseLeave = () => {
+    setRotation({ x: 0, y: 0 });
+  };
 
   return (
-    <div
-      ref={ref}
-      className={`transition-all duration-700 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}
-      style={{ transitionDelay: `${index * 100}ms` }}
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        perspective: '1000px',
+      }}
     >
-      <Card className="h-full bg-white hover:shadow-xl transition-all duration-300 group border-0 shadow-md overflow-hidden">
-        <CardContent className="p-6">
-          <div className="w-14 h-14 bg-promet-blue/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-promet-orange group-hover:scale-110 transition-all duration-300">
-            <Icon className="h-7 w-7 text-promet-blue group-hover:text-white transition-colors" />
-          </div>
-          <h3 className="font-sans font-bold text-xl text-promet-gray-dark mb-3">
-            {service.title}
-          </h3>
-          <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-            {service.description}
-          </p>
-          <div className="flex flex-wrap gap-2 mb-4">
-            {service.features.map((feature) => (
-              <span
-                key={feature}
-                className="text-xs bg-promet-gray-light text-promet-gray-dark px-2 py-1 rounded-full"
-              >
-                {feature}
-              </span>
-            ))}
-          </div>
-          <a
-            href="#contacto"
-            className="inline-flex items-center gap-1 text-promet-blue hover:text-promet-orange font-medium text-sm transition-colors group/link"
-          >
-            Solicitar información
-            <ArrowRight className="h-4 w-4 group-hover/link:translate-x-1 transition-transform" />
-          </a>
-        </CardContent>
-      </Card>
-    </div>
-  )
+      <motion.div
+        animate={{
+          rotateX: rotation.x,
+          rotateY: rotation.y,
+        }}
+        transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+      >
+        <Card
+          className="relative h-full bg-[#111318] border-white/5 hover:border-[#E8751A]/30 overflow-hidden group transition-all duration-300"
+          data-section="servicios"
+        >
+          {/* Gradient overlay on hover */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#E8751A]/0 via-transparent to-[#E8751A]/0 group-hover:from-[#E8751A]/5 group-hover:to-[#E8751A]/5 transition-all duration-300" />
+
+          <CardContent className="p-6 relative z-10">
+            <div className="mb-4">
+              <div className="w-12 h-12 bg-[#E8751A]/10 rounded-lg flex items-center justify-center mb-4">
+                <ArrowRight className="w-6 h-6 text-[#E8751A]" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
+            </div>
+
+            <p className="text-[#94A3B8] text-sm mb-6 leading-relaxed">
+              {service.description}
+            </p>
+
+            <div className="space-y-2 mb-6">
+              {service.features.map((feature, i) => (
+                <div key={i} className="flex items-center gap-2 text-[#94A3B8] text-sm">
+                  <div className="w-1.5 h-1.5 bg-[#E8751A] rounded-full" />
+                  {feature}
+                </div>
+              ))}
+            </div>
+
+            <motion.a
+              href={wa.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-[#E8751A] font-bold text-sm hover:text-[#FF8533] transition-colors group/link"
+              whileHover={{ x: 4 }}
+              data-cta
+              aria-label={wa.message}
+            >
+              Consultar
+              <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+            </motion.a>
+          </CardContent>
+        </Card>
+      </motion.div>
+    </motion.div>
+  );
 }
 
 export function Services() {
   return (
-    <section id="servicios" className="py-20 md:py-28 bg-promet-gray-light">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block text-promet-orange font-semibold text-sm uppercase tracking-wider mb-3">
-            Nuestros Servicios
-          </span>
-          <h2 className="font-sans font-bold text-3xl md:text-4xl lg:text-5xl text-promet-gray-dark mb-4 text-balance">
-            Soluciones metalúrgicas integrales
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            Desde la idea hasta la entrega. Ofrecemos un servicio completo con la más alta calidad y precisión.
+    <section
+      id="servicios"
+      className="py-20 bg-gradient-to-b from-[#1A1C20] to-[#111318]"
+      data-section="servicios"
+    >
+      <div className="max-w-6xl mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <p className="text-[#E8751A] text-sm font-bold uppercase tracking-widest mb-2">
+            NUESTROS SERVICIOS
           </p>
-        </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Si se hace en metal, nosotros lo fabricamos.
+          </h2>
+          <p className="text-[#94A3B8] text-lg max-w-2xl mx-auto">
+            Soluciones completas en carpintería metálica para tu hogar o negocio.
+          </p>
+        </motion.div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <ServiceCard key={service.title} service={service} index={index} />
+            <ServiceCard key={service.id} service={service} index={index} />
           ))}
-        </div>
-
-        {/* CTA */}
-        <div className="text-center mt-12">
-          <Button
-            asChild
-            size="lg"
-            className="bg-promet-orange hover:bg-promet-orange-light text-white font-semibold px-8"
-          >
-            <a href="#contacto">Ver todos los servicios</a>
-          </Button>
         </div>
       </div>
     </section>
-  )
+  );
 }

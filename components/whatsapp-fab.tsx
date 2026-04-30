@@ -1,72 +1,93 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import { MessageCircle, X } from 'lucide-react'
+import { useState, useEffect } from 'react';
+import { MessageCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useWhatsApp } from '@/hooks/use-whatsapp';
 
 export function WhatsAppFAB() {
-  const [isVisible, setIsVisible] = useState(false)
-  const [showTooltip, setShowTooltip] = useState(false)
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [hasHovered, setHasHovered] = useState(false);
+  const wa = useWhatsApp('floating');
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsVisible(window.scrollY > 300)
-    }
-    window.addEventListener('scroll', handleScroll)
-    
-    // Show tooltip after 3 seconds
-    const tooltipTimer = setTimeout(() => {
-      setShowTooltip(true)
-    }, 3000)
-    
-    // Hide tooltip after 8 seconds
-    const hideTimer = setTimeout(() => {
-      setShowTooltip(false)
-    }, 8000)
+    // Trigger attention pulse after 30 seconds if no CTA clicked
+    const timeout = setTimeout(() => {
+      if (!sessionStorage.getItem('cta_clicked')) {
+        setShowTooltip(true);
+        // Auto-hide after 3 seconds
+        const hideTimeout = setTimeout(() => {
+          setShowTooltip(false);
+        }, 3000);
+        return () => clearTimeout(hideTimeout);
+      }
+    }, 30000);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-      clearTimeout(tooltipTimer)
-      clearTimeout(hideTimer)
-    }
-  }, [])
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
-    <div
-      className={`fixed bottom-6 right-6 z-50 transition-all duration-300 ${
-        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
-      }`}
-    >
-      {/* Tooltip */}
-      {showTooltip && (
-        <div className="absolute bottom-full right-0 mb-3 animate-fade-in-up">
-          <div className="relative bg-white rounded-lg shadow-xl px-4 py-3 max-w-[200px]">
-            <button
-              onClick={() => setShowTooltip(false)}
-              className="absolute -top-2 -right-2 bg-gray-200 hover:bg-gray-300 rounded-full p-1 transition-colors"
-            >
-              <X className="h-3 w-3 text-gray-600" />
-            </button>
-            <p className="text-sm text-promet-gray-dark font-medium">
-              ¿Necesitas un presupuesto? ¡Escribinos!
-            </p>
-            <div className="absolute bottom-0 right-6 translate-y-full w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-white" />
-          </div>
-        </div>
-      )}
-
-      {/* Pulse ring effect */}
-      <div className="absolute inset-0 bg-green-500 rounded-full animate-pulse-ring" />
-      
-      {/* Main button */}
-      <a
-        href="https://wa.me/5411XXXXXXXX?text=Hola,%20quiero%20solicitar%20un%20presupuesto"
+    <>
+      {/* Floating Action Button */}
+      <motion.a
+        href={wa.link}
         target="_blank"
         rel="noopener noreferrer"
-        className="relative flex items-center justify-center w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full shadow-lg shadow-green-500/30 transition-all hover:scale-110"
-        aria-label="Contactar por WhatsApp"
+        className="fixed bottom-6 right-6 z-40 flex items-center justify-center"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ delay: 0.5, type: 'spring', stiffness: 100 }}
+        onMouseEnter={() => setHasHovered(true)}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        data-cta
+        aria-label="Abrir chat de WhatsApp con Promet"
       >
-        <MessageCircle className="h-7 w-7 text-white" fill="currentColor" />
-      </a>
-    </div>
-  )
+        {/* Pulse Ring Animation */}
+        <motion.div
+          className="absolute inset-0 rounded-full bg-[#25D366]"
+          animate={{
+            scale: [1, 1.5],
+            opacity: [0.6, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: 'easeOut',
+          }}
+        />
+
+        {/* Main Button */}
+        <div className="relative w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transition-shadow">
+          <motion.div
+            animate={hasHovered ? {} : { y: [0, -6, 0] }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              delay: 8,
+            }}
+          >
+            <MessageCircle size={28} className="text-white" />
+          </motion.div>
+        </div>
+      </motion.a>
+
+      {/* Tooltip */}
+      <AnimatePresence>
+        {showTooltip && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            transition={{ duration: 0.3 }}
+            className="fixed bottom-24 right-6 z-40 bg-[#111318] border border-[#25D366]/30 rounded-xl p-4 max-w-xs shadow-xl"
+          >
+            <p className="text-white text-sm font-medium">
+              ¿Necesitás ayuda? Escribinos ahora →
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
 }

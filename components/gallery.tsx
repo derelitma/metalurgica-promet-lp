@@ -1,180 +1,225 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
-import { Button } from '@/components/ui/button'
-import { ChevronLeft, ChevronRight, X } from 'lucide-react'
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { useWhatsApp } from '@/hooks/use-whatsapp';
 
 const projects = [
   {
     id: 1,
-    title: 'Estructura para nave industrial',
-    category: 'Estructuras',
+    title: 'Portón Automatizado',
+    neighborhood: 'Centro',
+    category: 'Portones',
     image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1470',
   },
   {
     id: 2,
-    title: 'Mecanizado de precisión CNC',
-    category: 'Mecanizado',
+    title: 'Puerta Blindada Premium',
+    neighborhood: 'Zona Norte',
+    category: 'Puertas',
     image: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?q=80&w=1470',
   },
   {
     id: 3,
-    title: 'Soldadura estructural certificada',
-    category: 'Soldadura',
+    title: 'Escalera Espiral Moderna',
+    neighborhood: 'Barrio Sur',
+    category: 'Escaleras',
     image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebb6cf2?q=80&w=1470',
   },
   {
     id: 4,
-    title: 'Fabricación de tanques industriales',
-    category: 'Fabricación',
+    title: 'Ventanas Doble Vidrio',
+    neighborhood: 'Centro',
+    category: 'Ventanas',
     image: 'https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?q=80&w=1470',
   },
   {
     id: 5,
-    title: 'Mantenimiento de maquinaria',
-    category: 'Mantenimiento',
+    title: 'Techo Retráctil',
+    neighborhood: 'Zona Norte',
+    category: 'Techos',
     image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1470',
   },
   {
     id: 6,
-    title: 'Escaleras y barandas metálicas',
-    category: 'Estructuras',
+    title: 'Barandas de Seguridad',
+    neighborhood: 'Barrio Sur',
+    category: 'Escaleras',
     image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1632',
   },
-]
+];
 
-const categories = ['Todos', 'Estructuras', 'Mecanizado', 'Soldadura', 'Fabricación', 'Mantenimiento']
+const categories = ['Todos', 'Portones', 'Puertas', 'Ventanas', 'Escaleras', 'Techos'];
 
-export function Gallery() {
-  const [selectedCategory, setSelectedCategory] = useState('Todos')
-  const [selectedImage, setSelectedImage] = useState<number | null>(null)
-
-  const filteredProjects = selectedCategory === 'Todos'
-    ? projects
-    : projects.filter(p => p.category === selectedCategory)
-
-  const navigateImage = (direction: 'prev' | 'next') => {
-    if (selectedImage === null) return
-    const currentIndex = filteredProjects.findIndex(p => p.id === selectedImage)
-    if (direction === 'prev') {
-      const newIndex = currentIndex === 0 ? filteredProjects.length - 1 : currentIndex - 1
-      setSelectedImage(filteredProjects[newIndex].id)
-    } else {
-      const newIndex = currentIndex === filteredProjects.length - 1 ? 0 : currentIndex + 1
-      setSelectedImage(filteredProjects[newIndex].id)
-    }
-  }
-
-  const selectedProject = projects.find(p => p.id === selectedImage)
+function GalleryItem({ project, index }: { project: (typeof projects)[0]; index: number }) {
+  const wa = useWhatsApp('gallery');
 
   return (
-    <section id="trabajos" className="py-20 md:py-28 bg-white">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="inline-block text-promet-orange font-semibold text-sm uppercase tracking-wider mb-3">
-            Nuestros Trabajos
-          </span>
-          <h2 className="font-sans font-bold text-3xl md:text-4xl lg:text-5xl text-promet-gray-dark mb-4 text-balance">
-            Proyectos que hablan por sí solos
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            Cada proyecto es único. Explorá algunos de nuestros trabajos más destacados.
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.05 }}
+      viewport={{ once: true }}
+      className="group relative overflow-hidden rounded-lg bg-[#0A0B0D] cursor-pointer h-64 md:h-72"
+      onClick={() => window.open(wa.link, '_blank', 'noopener,noreferrer')}
+    >
+      {/* Image with Grayscale Reveal */}
+      <motion.img
+        src={project.image}
+        alt={project.title}
+        className="w-full h-full object-cover"
+        initial={{ filter: 'grayscale(100%) brightness(0.7)' }}
+        whileHover={{ filter: 'grayscale(0%) brightness(1)', scale: 1.03 }}
+        transition={{ duration: 0.4, ease: 'easeOut' }}
+      />
+
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300" />
+
+      {/* Content - Fade in on Hover */}
+      <motion.div
+        className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center"
+        initial={{ opacity: 0 }}
+        whileHover={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+      >
+        <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{project.title}</h3>
+        <p className="text-[#94A3B8] text-sm mb-4">{project.neighborhood}</p>
+        <motion.button
+          className="bg-[#E8751A] hover:bg-[#FF8533] text-white px-6 py-2 rounded-lg font-bold text-sm transition-colors"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label={`Ver trabajo de ${project.category} en ${project.neighborhood}`}
+        >
+          Ver trabajo →
+        </motion.button>
+      </motion.div>
+
+      {/* Service Badge - Always visible */}
+      <div className="absolute top-4 right-4 z-10">
+        <span className="bg-[#E8751A] text-white px-3 py-1 rounded-full text-xs font-bold uppercase">
+          {project.category}
+        </span>
+      </div>
+    </motion.div>
+  );
+}
+
+export function Gallery() {
+  const [selectedCategory, setSelectedCategory] = useState('Todos');
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const wa = useWhatsApp('gallery');
+
+  const filteredProjects =
+    selectedCategory === 'Todos'
+      ? projects
+      : projects.filter((p) => p.category === selectedCategory);
+
+  const handlePrevImage = () => {
+    setSelectedImageIndex((prev) =>
+      prev === 0 ? filteredProjects.length - 1 : prev - 1
+    );
+  };
+
+  const handleNextImage = () => {
+    setSelectedImageIndex((prev) =>
+      prev === filteredProjects.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  return (
+    <section
+      id="trabajos"
+      className="py-20 bg-[#1A1C20]"
+      data-section="trabajos"
+    >
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <p className="text-[#E8751A] text-sm font-bold uppercase tracking-widest mb-2">
+            GALERÍA DE TRABAJOS
           </p>
-        </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Nuestros proyectos en acción
+          </h2>
+          <p className="text-[#94A3B8] text-lg">
+            Trabajos realizados en toda La Plata y zona de influencia
+          </p>
+        </motion.div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="flex flex-wrap gap-3 justify-center mb-12"
+        >
           {categories.map((category) => (
-            <button
+            <motion.button
               key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              onClick={() => {
+                setSelectedCategory(category);
+                setSelectedImageIndex(0);
+              }}
+              className={`px-6 py-2 rounded-full font-semibold uppercase text-sm transition-all ${
                 selectedCategory === category
-                  ? 'bg-promet-blue text-white'
-                  : 'bg-promet-gray-light text-promet-gray-dark hover:bg-promet-blue/10'
+                  ? 'bg-[#E8751A] text-white'
+                  : 'border border-white/10 text-white hover:border-[#E8751A]/50'
               }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label={`Filtrar por ${category}`}
+              aria-pressed={selectedCategory === category}
             >
               {category}
-            </button>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Masonry Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        {/* Gallery Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {filteredProjects.map((project, index) => (
-            <div
-              key={project.id}
-              className={`group relative overflow-hidden rounded-xl cursor-pointer ${
-                index === 0 ? 'md:col-span-2 md:row-span-2' : ''
-              }`}
-              onClick={() => setSelectedImage(project.id)}
-            >
-              <div className={`aspect-[4/3] ${index === 0 ? 'md:aspect-square' : ''}`}>
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                <span className="inline-block text-promet-orange text-sm font-medium mb-1">
-                  {project.category}
-                </span>
-                <h3 className="text-white font-semibold text-lg md:text-xl">
-                  {project.title}
-                </h3>
-              </div>
-            </div>
+            <GalleryItem key={project.id} project={project} index={index} />
           ))}
         </div>
 
-        {/* Lightbox Dialog */}
-        <Dialog open={selectedImage !== null} onOpenChange={() => setSelectedImage(null)}>
-          <DialogContent className="max-w-4xl bg-black/95 border-none p-0">
-            <DialogTitle className="sr-only">
-              {selectedProject?.title || 'Vista de proyecto'}
-            </DialogTitle>
-            <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 z-10 text-white/80 hover:text-white transition-colors"
-            >
-              <X className="h-6 w-6" />
-            </button>
-            <button
-              onClick={() => navigateImage('prev')}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-white/80 hover:text-white transition-colors"
-            >
-              <ChevronLeft className="h-8 w-8" />
-            </button>
-            <button
-              onClick={() => navigateImage('next')}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 text-white/80 hover:text-white transition-colors"
-            >
-              <ChevronRight className="h-8 w-8" />
-            </button>
-            {selectedProject && (
-              <div className="relative">
-                <img
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  className="w-full max-h-[80vh] object-contain"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
-                  <span className="text-promet-orange text-sm font-medium">
-                    {selectedProject.category}
-                  </span>
-                  <h3 className="text-white font-semibold text-xl">
-                    {selectedProject.title}
-                  </h3>
-                </div>
-              </div>
-            )}
-          </DialogContent>
-        </Dialog>
+        {/* CTA Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="bg-gradient-to-r from-[#E8751A]/10 to-[#FF8533]/10 border border-[#E8751A]/30 rounded-xl p-8 md:p-12 text-center"
+        >
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            ¿Ves algo que te gusta?
+          </h3>
+          <p className="text-[#94A3B8] text-lg mb-6 max-w-2xl mx-auto">
+            Contamos con los mejores profesionales y tecnología para hacer realidad tu proyecto.
+          </p>
+          <motion.a
+            href={wa.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-[#E8751A] hover:bg-[#FF8533] text-white px-8 py-4 rounded-lg font-bold uppercase text-sm transition-colors"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            data-cta
+            aria-label={wa.message}
+          >
+            Consultar por tu proyecto →
+          </motion.a>
+        </motion.div>
       </div>
     </section>
-  )
+  );
 }
