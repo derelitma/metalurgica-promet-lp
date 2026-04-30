@@ -1,16 +1,39 @@
+import { Navbar } from '@/components/navbar'
+import { Hero } from '@/components/hero'
+import { UrgencyMarquee } from '@/components/urgency-marquee'
+import { Services } from '@/components/services'
+import { Stats } from '@/components/stats'
+import { WhyUs } from '@/components/why-us'
+import { Gallery } from '@/components/gallery'
+import { ConversionBand } from '@/components/conversion-band'
+import { Process } from '@/components/process'
+import { Testimonials } from '@/components/testimonials'
+import { About } from '@/components/about'
+import { Contact } from '@/components/contact'
+import { Footer } from '@/components/footer'
+import { WhatsAppFAB } from '@/components/whatsapp-fab'
+import { BackToTop } from '@/components/back-to-top'
+import { MobileStickyFooter } from '@/components/mobile-sticky-footer'
+
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center font-sans">
-      <main className="flex w-full max-w-3xl flex-col items-center gap-8 px-6 py-16 text-center sm:items-start sm:text-left">
-        <div className="flex flex-col gap-4">
-          <h1 className="text-4xl font-bold tracking-tight">
-            metalurgica-promet-lp
-          </h1>
-          <p className="max-w-md text-lg text-muted-foreground">
-            To get started, send a prompt or modify this page directly.
-          </p>
-        </div>
-      </main>
-    </div>
-  );
+    <main>
+      <Navbar />
+      <Hero />
+      <UrgencyMarquee />
+      <Services />
+      <Stats />
+      <WhyUs />
+      <Gallery />
+      <ConversionBand />
+      <Process />
+      <Testimonials />
+      <About />
+      <Contact />
+      <Footer />
+      <WhatsAppFAB />
+      <BackToTop />
+      <MobileStickyFooter />
+    </main>
+  )
 }
