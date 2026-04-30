@@ -7,7 +7,7 @@ const steps = [
   {
     number: '01',
     icon: MessageSquare,
-    title: 'Escribimos',
+    title: 'Escribinos',
     description: 'Nos contactás por WhatsApp, teléfono o formulario. Contanos tu proyecto.',
   },
   {
@@ -59,18 +59,6 @@ function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) 
       }`}
       style={{ transitionDelay: `${index * 150}ms` }}
     >
-      {/* Desktop connector line */}
-      {!isLast && (
-        <div className="hidden lg:block absolute top-12 left-[calc(50%+3rem)] right-0 h-0.5 bg-[#E8751A]/20">
-          <div 
-            className={`h-full bg-[#E8751A] transition-all duration-1000 ${
-              isVisible ? 'w-full' : 'w-0'
-            }`}
-            style={{ transitionDelay: `${index * 150 + 300}ms` }}
-          />
-        </div>
-      )}
-
       {/* Mobile connector line */}
       {!isLast && (
         <div className="lg:hidden absolute top-24 left-1/2 -translate-x-1/2 w-0.5 h-12 bg-[#E8751A]/20">
@@ -123,10 +111,15 @@ export function Process() {
         </div>
 
         {/* Process Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
-          {steps.map((step, index) => (
-            <ProcessStep key={step.number} step={step} index={index} />
-          ))}
+        <div className="relative">
+          {/* Desktop: Single horizontal dashed line behind all icons */}
+          <div className="hidden lg:block absolute top-12 left-0 right-0 h-0.5 bg-gradient-to-r from-[#E8751A]/0 via-[#E8751A]/30 to-[#E8751A]/0 border-t-2 border-dashed border-[#E8751A]/30 z-0" />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4 relative z-10">
+            {steps.map((step, index) => (
+              <ProcessStep key={step.number} step={step} index={index} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

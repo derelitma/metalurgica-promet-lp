@@ -46,7 +46,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-white/70 text-sm leading-relaxed mb-6">
-              Portones, puertas, escaleras y techos a medida en La Plata. 60 años de la misma familia, la misma calle, la mismo compromiso.
+              60 años fabricando en La Plata. Calidad y palabra.
             </p>
             {/* Social Links */}
             <div className="flex gap-3">
@@ -108,31 +108,33 @@ export function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="https://maps.google.com/?q=Buenos+Aires"
+                  href="https://maps.google.com/?q=Calle+43+e/+148+y+149,+La+Plata"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-start gap-3 text-white/70 hover:text-white text-sm transition-colors"
                 >
                   <MapPin className="h-5 w-5 flex-shrink-0 mt-0.5" />
-                  <span>Av. Industrial 1234, Buenos Aires, Argentina</span>
+                  <span>Calle 43 entre 148 y 149, La Plata</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:+5411XXXXXXXX"
+                  href="https://wa.me/5492213611947?text=Hola%20Promet!%20Vi%20su%20web%20y%20quiero%20pedir%20un%20presupuesto."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-3 text-white/70 hover:text-white text-sm transition-colors"
                 >
-                  <Phone className="h-5 w-5 flex-shrink-0" />
-                  <span>+54 11 XXXX-XXXX</span>
+                  <MessageCircle className="h-5 w-5 flex-shrink-0" />
+                  <span>+54 9 221 361-1947</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:info@metalurgicapromet.com.ar"
+                  href="mailto:metalurgicaprometlp@gmail.com"
                   className="flex items-center gap-3 text-white/70 hover:text-white text-sm transition-colors"
                 >
                   <Mail className="h-5 w-5 flex-shrink-0" />
-                  <span>info@metalurgicapromet.com.ar</span>
+                  <span>metalurgicaprometlp@gmail.com</span>
                 </a>
               </li>
             </ul>
