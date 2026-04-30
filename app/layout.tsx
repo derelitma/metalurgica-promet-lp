@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Montserrat, Open_Sans } from 'next/font/google'
+import { Montserrat, Open_Sans, Barlow_Condensed, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
@@ -13,6 +13,20 @@ const montserrat = Montserrat({
 const openSans = Open_Sans({
   subsets: ['latin'],
   variable: '--font-open-sans',
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+})
+
+const barlowCondensed = Barlow_Condensed({
+  subsets: ['latin'],
+  variable: '--font-barlow-condensed',
+  display: 'swap',
+  weight: ['400', '500', '600', '700', '800', '900'],
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
   display: 'swap',
   weight: ['400', '500', '600', '700'],
 })
@@ -198,7 +212,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${montserrat.variable} ${openSans.variable} bg-[#0A0B0D]`}
+      className={`${montserrat.variable} ${openSans.variable} ${barlowCondensed.variable} ${inter.variable} bg-[#0A0B0D]`}
       suppressHydrationWarning
     >
       <head>

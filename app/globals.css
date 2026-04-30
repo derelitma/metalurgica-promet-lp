@@ -97,6 +97,8 @@
   --font-sans: var(--font-montserrat), 'Montserrat', system-ui, sans-serif;
   --font-serif: var(--font-open-sans), 'Open Sans', system-ui, sans-serif;
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-display: var(--font-barlow-condensed), 'Barlow Condensed', system-ui, sans-serif;
+  --font-body: var(--font-inter), 'Inter', system-ui, sans-serif;
   
   /* Premium Forged Steel Colors */
   --color-steel-deep: #0F172A;
@@ -226,6 +228,15 @@
 @keyframes shimmer {
   0% { background-position: -200% center; }
   100% { background-position: 200% center; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(217, 119, 6, 0.3); }
+  50% { box-shadow: 0 0 35px rgba(217, 119, 6, 0.5), 0 0 60px rgba(217, 119, 6, 0.2); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
 }
 
 .animate-marquee {
