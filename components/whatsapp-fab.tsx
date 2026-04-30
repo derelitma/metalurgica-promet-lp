@@ -11,17 +11,18 @@ export function WhatsAppFAB() {
   const wa = useWhatsApp('floating');
 
   useEffect(() => {
-    // Trigger attention pulse after 30 seconds if no CTA clicked
+    // Trigger tooltip after 20 seconds of inactivity
     const timeout = setTimeout(() => {
-      if (!sessionStorage.getItem('cta_clicked')) {
+      if (!sessionStorage.getItem('fab_tooltip_shown')) {
         setShowTooltip(true);
-        // Auto-hide after 3 seconds
+        sessionStorage.setItem('fab_tooltip_shown', 'true');
+        // Auto-hide after 5 seconds
         const hideTimeout = setTimeout(() => {
           setShowTooltip(false);
-        }, 3000);
+        }, 5000);
         return () => clearTimeout(hideTimeout);
       }
-    }, 30000);
+    }, 20000);
 
     return () => clearTimeout(timeout);
   }, []);
@@ -83,7 +84,9 @@ export function WhatsAppFAB() {
             className="fixed bottom-24 right-6 z-40 bg-[#111318] border border-[#25D366]/30 rounded-xl p-4 max-w-xs shadow-xl"
           >
             <p className="text-white text-sm font-medium">
-              ¿Necesitás ayuda? Escribinos ahora →
+              ¿Necesitás ayuda?
+              <br />
+              Respondemos ahora →
             </p>
           </motion.div>
         )}

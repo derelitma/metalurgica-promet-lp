@@ -7,26 +7,26 @@ const steps = [
   {
     number: '01',
     icon: MessageSquare,
-    title: 'Contacto',
-    description: 'Nos contactás por WhatsApp, teléfono o formulario. Contanos tu proyecto y necesidades.',
+    title: 'Escribimos',
+    description: 'Nos contactás por WhatsApp, teléfono o formulario. Contanos tu proyecto.',
   },
   {
     number: '02',
     icon: FileText,
     title: 'Presupuesto',
-    description: 'En menos de 24hs recibís un presupuesto detallado sin cargo ni compromiso.',
+    description: 'En 24/48hs recibís presupuesto detallado, sin cargo ni compromiso.',
   },
   {
     number: '03',
     icon: Settings,
     title: 'Fabricación',
-    description: 'Una vez aprobado, comenzamos la fabricación con los más altos estándares de calidad.',
+    description: 'Comenzamos la fabricación con los más altos estándares de calidad.',
   },
   {
     number: '04',
     icon: CheckCircle,
     title: 'Entrega',
-    description: 'Entregamos en tiempo y forma. Garantía incluida en todos nuestros trabajos.',
+    description: 'Entregamos en tiempo y forma. Si algo no quedó como acordamos, lo resolvemos. Siempre.',
   },
 ]
 

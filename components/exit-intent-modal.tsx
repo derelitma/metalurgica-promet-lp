@@ -17,22 +17,15 @@ export function ExitIntentModal() {
     let hasTriggered = false;
 
     const handleMouseLeave = (e: MouseEvent) => {
-      // Check if already triggered
-      if (hasTriggered) return;
-
-      // Check if session already saw it
+      // Only trigger if mouse is moving toward top (exit intent)
+      if (hasTriggered || e.clientY <= 10) return;
       if (sessionStorage.getItem('exit_intent_shown')) return;
 
-      // Only trigger if mouse is leaving from top
-      if (e.clientY <= 20) {
-        // Wait 15 seconds before showing
-        if (!timeoutId) {
-          timeoutId = setTimeout(() => {
-            setShowModal(true);
-            hasTriggered = true;
-            sessionStorage.setItem('exit_intent_shown', 'true');
-          }, 15000);
-        }
+      // Detect mouse moving toward browser bar
+      if (e.clientY < 30 && (e as any).movementY < -5) {
+        hasTriggered = true;
+        setShowModal(true);
+        sessionStorage.setItem('exit_intent_shown', 'true');
       }
     };
 
@@ -71,12 +64,12 @@ export function ExitIntentModal() {
             </button>
 
             {/* Content */}
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Esperate un segundo.
+            <h2 className="text-4xl font-black text-white mb-4">
+              Antes de irte.
             </h2>
 
-            <p className="text-[#94A3B8] text-lg mb-8">
-              Antes de irte, pedí el presupuesto. Es gratis, son 30 segundos y te respondemos hoy.
+            <p className="text-[#94A3B8] text-lg mb-8 leading-relaxed">
+              El presupuesto es gratis. Son 30 segundos. Te respondemos hoy.
             </p>
 
             {/* Primary CTA */}

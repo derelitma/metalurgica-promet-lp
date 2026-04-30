@@ -7,219 +7,158 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { useWhatsApp } from '@/hooks/use-whatsapp';
 
 const projects = [
-  {
-    id: 1,
-    title: 'Portón Automatizado',
-    neighborhood: 'Centro',
-    category: 'Portones',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1470',
-  },
-  {
-    id: 2,
-    title: 'Puerta Blindada Premium',
-    neighborhood: 'Zona Norte',
-    category: 'Puertas',
-    image: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?q=80&w=1470',
-  },
-  {
-    id: 3,
-    title: 'Escalera Espiral Moderna',
-    neighborhood: 'Barrio Sur',
-    category: 'Escaleras',
-    image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebb6cf2?q=80&w=1470',
-  },
-  {
-    id: 4,
-    title: 'Ventanas Doble Vidrio',
-    neighborhood: 'Centro',
-    category: 'Ventanas',
-    image: 'https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?q=80&w=1470',
-  },
-  {
-    id: 5,
-    title: 'Techo Retráctil',
-    neighborhood: 'Zona Norte',
-    category: 'Techos',
-    image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1470',
-  },
-  {
-    id: 6,
-    title: 'Barandas de Seguridad',
-    neighborhood: 'Barrio Sur',
-    category: 'Escaleras',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1632',
-  },
+  { id: 1, title: 'Portón', neighborhood: 'City Bell' },
+  { id: 2, title: 'Escalera', neighborhood: 'Tolosa' },
+  { id: 3, title: 'Techo', neighborhood: 'Ensenada' },
+  { id: 4, title: 'Ventanas', neighborhood: 'Gonnet' },
+  { id: 5, title: 'Puerta', neighborhood: 'La Plata Centro' },
+  { id: 6, title: 'Portón corredizo', neighborhood: 'Villa Elisa' },
+  { id: 7, title: 'Estructura', neighborhood: 'Los Hornos' },
+  { id: 8, title: 'Escalera exterior', neighborhood: 'Berisso' },
+  { id: 9, title: 'Puerta blindada', neighborhood: 'City Bell' },
 ];
 
-const categories = ['Todos', 'Portones', 'Puertas', 'Ventanas', 'Escaleras', 'Techos'];
-
-function GalleryItem({ project, index }: { project: (typeof projects)[0]; index: number }) {
-  const wa = useWhatsApp('gallery');
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.05 }}
-      viewport={{ once: true }}
-      className="group relative overflow-hidden rounded-lg bg-[#0A0B0D] cursor-pointer h-64 md:h-72"
-      onClick={() => window.open(wa.link, '_blank', 'noopener,noreferrer')}
-    >
-      {/* Image with Grayscale Reveal */}
-      <motion.img
-        src={project.image}
-        alt={project.title}
-        className="w-full h-full object-cover"
-        initial={{ filter: 'grayscale(100%) brightness(0.7)' }}
-        whileHover={{ filter: 'grayscale(0%) brightness(1)', scale: 1.03 }}
-        transition={{ duration: 0.4, ease: 'easeOut' }}
-      />
-
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300" />
-
-      {/* Content - Fade in on Hover */}
-      <motion.div
-        className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center"
-        initial={{ opacity: 0 }}
-        whileHover={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-      >
-        <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{project.title}</h3>
-        <p className="text-[#94A3B8] text-sm mb-4">{project.neighborhood}</p>
-        <motion.button
-          className="bg-[#E8751A] hover:bg-[#FF8533] text-white px-6 py-2 rounded-lg font-bold text-sm transition-colors"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          aria-label={`Ver trabajo de ${project.category} en ${project.neighborhood}`}
-        >
-          Ver trabajo →
-        </motion.button>
-      </motion.div>
-
-      {/* Service Badge - Always visible */}
-      <div className="absolute top-4 right-4 z-10">
-        <span className="bg-[#E8751A] text-white px-3 py-1 rounded-full text-xs font-bold uppercase">
-          {project.category}
-        </span>
-      </div>
-    </motion.div>
-  );
-}
-
 export function Gallery() {
-  const [selectedCategory, setSelectedCategory] = useState('Todos');
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const wa = useWhatsApp('gallery');
 
-  const filteredProjects =
-    selectedCategory === 'Todos'
-      ? projects
-      : projects.filter((p) => p.category === selectedCategory);
-
-  const handlePrevImage = () => {
-    setSelectedImageIndex((prev) =>
-      prev === 0 ? filteredProjects.length - 1 : prev - 1
-    );
+  const handleNext = () => {
+    if (selectedIndex !== null && selectedIndex < projects.length - 1) {
+      setSelectedIndex(selectedIndex + 1);
+    }
   };
 
-  const handleNextImage = () => {
-    setSelectedImageIndex((prev) =>
-      prev === filteredProjects.length - 1 ? 0 : prev + 1
-    );
+  const handlePrev = () => {
+    if (selectedIndex !== null && selectedIndex > 0) {
+      setSelectedIndex(selectedIndex - 1);
+    }
   };
 
   return (
-    <section
-      id="trabajos"
-      className="py-20 bg-[#1A1C20]"
-      data-section="trabajos"
-    >
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <p className="text-[#E8751A] text-sm font-bold uppercase tracking-widest mb-2">
-            GALERÍA DE TRABAJOS
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Nuestros proyectos en acción
-          </h2>
-          <p className="text-[#94A3B8] text-lg">
-            Trabajos realizados en toda La Plata y zona de influencia
-          </p>
-        </motion.div>
+    <>
+      <section className="py-20 md:py-32 bg-[#1A1C20] relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+              Trabajos realizados en La Plata
+            </h2>
+            <p className="text-[#94A3B8] text-lg max-w-2xl mx-auto">
+              De City Bell a Berisso. Lo que hacemos vale la pena.
+            </p>
+          </motion.div>
 
-        {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap gap-3 justify-center mb-12"
-        >
-          {categories.map((category) => (
-            <motion.button
-              key={category}
-              onClick={() => {
-                setSelectedCategory(category);
-                setSelectedImageIndex(0);
-              }}
-              className={`px-6 py-2 rounded-full font-semibold uppercase text-sm transition-all ${
-                selectedCategory === category
-                  ? 'bg-[#E8751A] text-white'
-                  : 'border border-white/10 text-white hover:border-[#E8751A]/50'
-              }`}
+          {/* Masonry Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            {projects.map((project, index) => (
+              <motion.button
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.05 }}
+                viewport={{ once: true }}
+                onClick={() => setSelectedIndex(index)}
+                className="group relative h-64 overflow-hidden rounded-lg bg-gradient-to-br from-[#E8751A]/20 to-[#003366]/20 border border-[#E8751A]/20 hover:border-[#E8751A] transition-all cursor-pointer"
+              >
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#111318]/90 z-10" />
+                <div className="absolute inset-0 bg-[#E8751A]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                <div className="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="text-center">
+                    <p className="text-white font-bold text-lg">{project.title}</p>
+                    <p className="text-[#E8751A] text-sm">· {project.neighborhood}</p>
+                  </div>
+                </div>
+
+                <div className="absolute bottom-0 left-0 right-0 p-4 z-20 bg-gradient-to-t from-[#111318] to-transparent">
+                  <p className="text-white font-bold text-sm">{project.title}</p>
+                  <p className="text-[#E8751A] text-xs">· {project.neighborhood}</p>
+                </div>
+              </motion.button>
+            ))}
+          </div>
+
+          {/* CTA Band */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="bg-[#E8751A] rounded-xl p-12 text-center"
+          >
+            <h3 className="text-3xl md:text-4xl font-black text-[#111318] mb-2">
+              Tu casa puede quedar así.
+            </h3>
+            <p className="text-[#111318] text-lg mb-8 opacity-90">
+              Un presupuesto gratis es todo lo que necesitás.
+            </p>
+            <motion.a
+              href={wa.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-[#111318] hover:bg-[#1A1C20] text-white px-8 py-4 rounded-lg font-bold uppercase transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              aria-label={`Filtrar por ${category}`}
-              aria-pressed={selectedCategory === category}
+              data-cta
+              aria-label={wa.message}
             >
-              {category}
-            </motion.button>
-          ))}
-        </motion.div>
-
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {filteredProjects.map((project, index) => (
-            <GalleryItem key={project.id} project={project} index={index} />
-          ))}
+              QUIERO MI PRESUPUESTO →
+            </motion.a>
+          </motion.div>
         </div>
+      </section>
 
-        {/* CTA Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="bg-gradient-to-r from-[#E8751A]/10 to-[#FF8533]/10 border border-[#E8751A]/30 rounded-xl p-8 md:p-12 text-center"
-        >
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            ¿Ves algo que te gusta?
-          </h3>
-          <p className="text-[#94A3B8] text-lg mb-6 max-w-2xl mx-auto">
-            Contamos con los mejores profesionales y tecnología para hacer realidad tu proyecto.
-          </p>
-          <motion.a
-            href={wa.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-[#E8751A] hover:bg-[#FF8533] text-white px-8 py-4 rounded-lg font-bold uppercase text-sm transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            data-cta
-            aria-label={wa.message}
+      {/* Lightbox Modal */}
+      <Dialog open={selectedIndex !== null} onOpenChange={(open) => !open && setSelectedIndex(null)}>
+        <DialogContent className="max-w-4xl bg-[#111318] border-[#E8751A]/20">
+          <DialogTitle className="sr-only">Galería de proyectos</DialogTitle>
+          <button
+            onClick={() => setSelectedIndex(null)}
+            className="absolute top-4 right-4 z-50 p-2 hover:bg-[#E8751A]/20 rounded-full transition-colors"
+            aria-label="Cerrar"
           >
-            Consultar por tu proyecto →
-          </motion.a>
-        </motion.div>
-      </div>
-    </section>
+            <X className="w-6 h-6 text-white" />
+          </button>
+
+          {selectedIndex !== null && (
+            <div className="space-y-4">
+              <div className="bg-gradient-to-br from-[#E8751A]/20 to-[#003366]/20 h-96 rounded-lg flex items-center justify-center">
+                <div className="text-center">
+                  <p className="text-white font-bold text-2xl">{projects[selectedIndex].title}</p>
+                  <p className="text-[#E8751A] text-lg">· {projects[selectedIndex].neighborhood}</p>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={handlePrev}
+                  disabled={selectedIndex === 0}
+                  className="p-2 hover:bg-[#E8751A]/20 rounded-full disabled:opacity-50 transition-colors"
+                  aria-label="Anterior"
+                >
+                  <ChevronLeft className="w-6 h-6 text-white" />
+                </button>
+                <span className="text-[#94A3B8]">
+                  {selectedIndex + 1} / {projects.length}
+                </span>
+                <button
+                  onClick={handleNext}
+                  disabled={selectedIndex === projects.length - 1}
+                  className="p-2 hover:bg-[#E8751A]/20 rounded-full disabled:opacity-50 transition-colors"
+                  aria-label="Siguiente"
+                >
+                  <ChevronRight className="w-6 h-6 text-white" />
+                </button>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }

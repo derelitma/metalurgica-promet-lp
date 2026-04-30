@@ -2,67 +2,28 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Clock, Award, Users, ThumbsUp } from 'lucide-react';
 
-const stats = [
-  {
-    icon: Clock,
-    value: 60,
-    suffix: ' años',
-    label: 'Experiencia',
-    description: 'Desde 1964 al servicio de La Plata',
-  },
-  {
-    icon: Award,
-    value: 50,
-    suffix: '+ presupuestos',
-    label: 'Por semana',
-    description: 'Confían en nuestro trabajo',
-  },
-  {
-    icon: Users,
-    value: 47,
-    suffix: '',
-    label: 'Testimonios',
-    description: 'Clientes satisfechos y recomendando',
-  },
-  {
-    icon: ThumbsUp,
-    value: 99,
-    suffix: '%',
-    label: 'Recomendación',
-    description: 'Vuelven y nos recomiendan',
-  },
-];
-
-function CountUp({
-  end,
-  duration = 2000,
-  suffix = '',
-}: {
-  end: number;
-  duration?: number;
-  suffix?: string;
-}) {
-  const [count, setCount] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
+function AnimatedNumber({ value, duration = 2000 }: { value: number; duration?: number }) {
+  const [displayValue, setDisplayValue] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-          let startTime: number;
-          const animate = (currentTime: number) => {
-            if (!startTime) startTime = currentTime;
-            const progress = Math.min((currentTime - startTime) / duration, 1);
-            setCount(Math.floor(progress * end));
-            if (progress < 1) {
-              requestAnimationFrame(animate);
+        if (entry.isIntersecting) {
+          let start = 0;
+          const increment = value / (duration! / 16);
+          const timer = setInterval(() => {
+            start += increment;
+            if (start >= value) {
+              setDisplayValue(value);
+              clearInterval(timer);
+            } else {
+              setDisplayValue(Math.floor(start));
             }
-          };
-          requestAnimationFrame(animate);
+          }, 16);
+
+          return () => clearInterval(timer);
         }
       },
       { threshold: 0.5 }
@@ -70,82 +31,55 @@ function CountUp({
 
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, [end, duration, hasAnimated]);
+  }, [value, duration]);
 
-  return <span ref={ref}>{count}{suffix}</span>;
+  return <span ref={ref}>{displayValue}</span>;
 }
 
 export function Stats() {
   return (
-    <section className="py-20 bg-gradient-to-b from-[#111318] to-[#0A0B0D]">
-      <div className="max-w-7xl mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <p className="text-[#E8751A] text-sm font-bold uppercase tracking-widest mb-2">
-            POR LOS NÚMEROS
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
-            Números que hablan
-          </h2>
-        </motion.div>
+    <section className="py-20 md:py-32 bg-[#1A1C20] relative overflow-hidden">
+      <div className="container mx-auto px-4">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            {/* Stat 1 */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center md:text-left"
+            >
+              <div className="mb-4">
+                <span className="text-7xl md:text-9xl font-black text-[#E8751A] leading-none">
+                  +<AnimatedNumber value={60} />
+                </span>
+              </div>
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-2">años en La Plata</h3>
+              <p className="text-[#94A3B8] italic text-sm">
+                3 generaciones, mismo apellido, misma calle
+              </p>
+            </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {stats.map((stat, index) => {
-            const Icon = stat.icon;
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="relative group"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#E8751A]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
-
-                <div className="relative bg-[#111318] border border-white/5 group-hover:border-[#E8751A]/30 rounded-xl p-6 transition-all duration-300">
-                  {/* Icon */}
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{
-                      duration: 0.5,
-                      delay: index * 0.1 + 0.2,
-                      type: 'spring',
-                      stiffness: 100,
-                    }}
-                    viewport={{ once: true }}
-                    className="w-12 h-12 bg-[#E8751A]/10 rounded-lg flex items-center justify-center mb-4"
-                  >
-                    <Icon className="w-6 h-6 text-[#E8751A]" />
-                  </motion.div>
-
-                  {/* Value */}
-                  <div className="mb-2">
-                    <span className="text-4xl md:text-5xl font-bold text-white">
-                      <CountUp
-                        end={stat.value}
-                        duration={2000}
-                        suffix={stat.suffix.includes('+') || stat.suffix.includes('%') ? '' : ''}
-                      />
-                      {stat.suffix.includes('+') || stat.suffix.includes('%') ? stat.suffix : ''}
-                    </span>
-                  </div>
-
-                  {/* Label */}
-                  <h3 className="text-lg font-bold text-white mb-1">{stat.label}</h3>
-
-                  {/* Description */}
-                  <p className="text-[#94A3B8] text-sm">{stat.description}</p>
-                </div>
-              </motion.div>
-            );
-          })}
+            {/* Stat 2 */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="text-center md:text-left"
+            >
+              <div className="mb-4">
+                <span className="text-7xl md:text-9xl font-black text-[#E8751A] leading-none">
+                  +<AnimatedNumber value={50} />
+                </span>
+              </div>
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-2">presupuestos por semana</h3>
+              <p className="text-[#94A3B8] italic text-sm">
+                la demanda no para, y nosotros tampoco
+              </p>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

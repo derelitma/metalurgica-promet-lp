@@ -3,18 +3,18 @@ import { Facebook, Instagram, Linkedin, MapPin, Phone, Mail } from 'lucide-react
 
 const footerLinks = {
   servicios: [
-    { label: 'Soldadura Industrial', href: '#servicios' },
-    { label: 'Mecanizado de Precisión', href: '#servicios' },
-    { label: 'Estructuras Metálicas', href: '#servicios' },
-    { label: 'Mantenimiento Industrial', href: '#servicios' },
-    { label: 'Corte y Plegado', href: '#servicios' },
+    { label: 'Portones', href: '#servicios' },
+    { label: 'Puertas', href: '#servicios' },
+    { label: 'Ventanas', href: '#servicios' },
+    { label: 'Escaleras', href: '#servicios' },
+    { label: 'Techos', href: '#servicios' },
   ],
   empresa: [
-    { label: 'Sobre Nosotros', href: '#nosotros' },
-    { label: 'Nuestros Trabajos', href: '#trabajos' },
-    { label: 'Proceso de Trabajo', href: '#proceso' },
-    { label: 'Testimonios', href: '#testimonios' },
-    { label: 'Contacto', href: '#contacto' },
+    { label: 'Quiénes somos', href: '#nosotros' },
+    { label: 'Nuestros trabajos', href: '#trabajos' },
+    { label: 'Cómo trabajamos', href: '#proceso' },
+    { label: 'Lo que dicen de nosotros', href: '#testimonios' },
+    { label: 'Escribinos', href: '#contacto' },
   ],
 }
 
@@ -45,7 +45,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-white/70 text-sm leading-relaxed mb-6">
-              60 años transformando metal en soluciones industriales. Calidad, precisión y compromiso en cada proyecto.
+              Portones, puertas, escaleras y techos a medida en La Plata. 60 años de la misma familia, la misma calle, la mismo compromiso.
             </p>
             {/* Social Links */}
             <div className="flex gap-3">
@@ -143,9 +143,14 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
-            <p>
-              &copy; {currentYear} Metalúrgica Promet. Todos los derechos reservados.
-            </p>
+            <div>
+              <p>
+                &copy; {currentYear} Metalúrgica Promet. Todos los derechos reservados.
+              </p>
+              <p className="italic text-xs text-white/50 mt-1">
+                60 años en La Plata no se improvisan.
+              </p>
+            </div>
             <div className="flex items-center gap-6">
               <a href="#" className="hover:text-white transition-colors">
                 Política de Privacidad

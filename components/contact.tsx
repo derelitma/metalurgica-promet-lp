@@ -325,22 +325,27 @@ export function Contact() {
                   </Field>
                 </FieldGroup>
 
-                <Button
-                  type="submit"
-                  disabled={state === 'validating'}
-                  className="w-full bg-[#E8751A] hover:bg-[#FF8533] text-white py-3 rounded-lg font-bold uppercase text-sm transition-all disabled:opacity-70"
-                  data-cta
-                  aria-label="Enviar solicitud de presupuesto"
-                >
-                  {state === 'validating' ? (
-                    <>
-                      <Spinner className="w-4 h-4 mr-2 inline" />
-                      Verificando...
-                    </>
-                  ) : (
-                    'QUIERO MI PRESUPUESTO AHORA →'
-                  )}
-                </Button>
+              <Button
+                type="submit"
+                disabled={state === 'submitting'}
+                className="w-full bg-[#E8751A] hover:bg-[#FF8533] text-white font-bold py-4 text-lg uppercase h-14"
+              >
+                {state === 'submitting' ? (
+                  <>
+                    <Spinner className="mr-2 h-4 w-4" />
+                    Enviando...
+                  </>
+                ) : state === 'success' ? (
+                  '✓ Presupuesto en camino'
+                ) : (
+                  'QUIERO MI PRESUPUESTO AHORA →'
+                )}
+              </Button>
+
+              {/* Privacy & trust copy */}
+              <p className="text-[#4A4A48] text-xs text-center">
+                🔒 Tu información es privada. Solo te contactamos para el presupuesto. Nada más.
+              </p>
 
                 <p className="text-center text-xs text-[#4A4A48] italic">
                   Si algo no queda como acordamos, lo resolvemos. Siempre.
