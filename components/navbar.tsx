@@ -74,15 +74,26 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-[#003366]/95 backdrop-blur-sm shadow-lg py-2'
-          : 'bg-transparent py-4'
-      } ${navHidden ? '-translate-y-full' : 'translate-y-0'}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navHidden ? '-translate-y-full' : 'translate-y-0'}`}
       role="banner"
     >
+      {/* Eyebrow Top Bar */}
+      <div className="bg-[#E8751A] text-white text-center py-1.5">
+        <p className="text-[13px] font-medium tracking-wide" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
+          Respondemos hoy. Presupuestos en menos de 24hs.
+        </p>
+      </div>
+      
+      {/* Main Navigation */}
+      <div
+        className={`transition-all duration-300 ${
+          isScrolled
+            ? 'bg-[#003366]/95 backdrop-blur-sm shadow-lg py-2'
+            : 'bg-transparent py-4'
+        }`}
+      >
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between h-14">
           {/* Logo */}
           <Link href="#" className="flex items-center gap-2 z-10">
             <div className="w-10 h-10 bg-[#E8751A] rounded-lg flex items-center justify-center">
@@ -182,13 +193,13 @@ export function Navbar() {
                       WhatsApp
                     </p>
                     <a
-                      href="https://wa.me/5492215551234"
+                      href="https://wa.me/5492213611947?text=Hola%20Promet!%20Vi%20su%20web%20y%20quiero%20pedir%20un%20presupuesto."
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-white font-medium text-sm hover:text-[#E8751A] transition-colors"
                       aria-label="Abrir chat de WhatsApp"
                     >
-                      +54 9 221 555-1234
+                      +54 9 221 361-1947
                     </a>
                   </div>
 
@@ -208,6 +219,7 @@ export function Navbar() {
             </SheetContent>
           </Sheet>
         </div>
+      </div>
       </div>
     </header>
   );

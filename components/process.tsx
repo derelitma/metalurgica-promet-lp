@@ -5,25 +5,25 @@ import { MessageSquare, FileText, Settings, CheckCircle } from 'lucide-react'
 
 const steps = [
   {
-    number: '01',
+    number: '1',
     icon: MessageSquare,
     title: 'Escribinos',
     description: 'Nos contactás por WhatsApp, teléfono o formulario. Contanos tu proyecto.',
   },
   {
-    number: '02',
+    number: '2',
     icon: FileText,
     title: 'Presupuesto',
     description: 'En menos de 24hs recibís presupuesto detallado, sin cargo ni compromiso.',
   },
   {
-    number: '03',
+    number: '3',
     icon: Settings,
     title: 'Fabricación',
     description: 'Comenzamos la fabricación con los más altos estándares de calidad.',
   },
   {
-    number: '04',
+    number: '4',
     icon: CheckCircle,
     title: 'Entrega',
     description: 'Entregamos en tiempo y forma. Si algo no quedó como acordamos, lo resolvemos. Siempre.',
@@ -59,12 +59,12 @@ function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) 
       }`}
       style={{ transitionDelay: `${index * 150}ms` }}
     >
-      {/* Mobile connector line */}
+      {/* Mobile vertical connector line - connects bottom of circle to top of next */}
       {!isLast && (
-        <div className="lg:hidden absolute top-24 left-1/2 -translate-x-1/2 w-0.5 h-12 bg-[#E8751A]/20">
+        <div className="lg:hidden absolute top-[6.5rem] left-1/2 -translate-x-1/2 w-0.5 h-16 overflow-hidden">
           <div 
-            className={`w-full bg-[#E8751A] transition-all duration-1000 ${
-              isVisible ? 'h-full' : 'h-0'
+            className={`w-full border-l-2 border-dashed border-[#E8751A]/30 h-full transition-all duration-1000 ${
+              isVisible ? 'opacity-100' : 'opacity-0'
             }`}
             style={{ transitionDelay: `${index * 150 + 300}ms` }}
           />

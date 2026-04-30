@@ -71,12 +71,12 @@ export function Stats() {
             >
               <div className="mb-4">
                 <span className="text-7xl md:text-9xl font-black text-[#E8751A] leading-none">
-                  +<AnimatedNumber value={50} />
+                  +<AnimatedNumber value={12000} duration={2500} />
                 </span>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-2">presupuestos por semana</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Obras entregadas</h3>
               <p className="text-[#94A3B8] italic text-sm">
-                la demanda no para, y nosotros tampoco
+                Trabajos realizados en La Plata y zona desde 1960
               </p>
             </motion.div>
           </div>

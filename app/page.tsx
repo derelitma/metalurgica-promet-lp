@@ -15,7 +15,6 @@ import { WhatsAppFAB } from '@/components/whatsapp-fab'
 import { BackToTop } from '@/components/back-to-top'
 import { MobileStickyFooter } from '@/components/mobile-sticky-footer'
 import { ExitIntentModal } from '@/components/exit-intent-modal'
-import { ScrollBottomBanner } from '@/components/scroll-bottom-banner'
 
 export default function Home() {
   return (
@@ -39,7 +38,6 @@ export default function Home() {
         <MobileStickyFooter />
       </main>
       <ExitIntentModal />
-      <ScrollBottomBanner />
     </>
   )
 }

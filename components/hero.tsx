@@ -42,7 +42,7 @@ export function Hero() {
 
   return (
     <section
-      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-28"
       style={{
         backgroundColor: '#111318',
         backgroundImage: `
@@ -82,7 +82,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight"
+            className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight text-balance"
           >
             Portones, Escaleras y Techos
             <br />
@@ -101,19 +101,9 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-lg md:text-xl text-[#94A3B8] mb-2 max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-[#94A3B8] mb-12 max-w-2xl mx-auto"
           >
             Fabricación e instalación a medida. Presupuesto gratis en menos de 24hs.
-          </motion.p>
-
-          {/* Real urgency copy - SINGLE INSTANCE */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="text-sm text-[#94A3B8] mb-12"
-          >
-            Respondemos hoy.
           </motion.p>
 
           {/* CTA buttons */}
@@ -151,16 +141,13 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - subtle animated chevron only */}
       <motion.div
-        className="absolute bottom-6 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-5 left-1/2 -translate-x-1/2"
+        animate={{ y: [0, 6, 0] }}
+        transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
       >
-        <div className="flex flex-col items-center gap-1">
-          <span className="text-[#4A4A48] text-[10px] uppercase tracking-widest font-medium">Desplazá</span>
-          <ChevronDown className="w-4 h-4 text-[#4A4A48] animate-scroll-indicator" />
-        </div>
+        <ChevronDown className="w-5 h-5 text-[#4A4A48]/60" />
       </motion.div>
     </section>
   );
