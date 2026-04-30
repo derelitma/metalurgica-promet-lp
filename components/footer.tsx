@@ -108,13 +108,13 @@ export function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="https://maps.google.com/?q=Calle+43+e/+148+y+149,+La+Plata"
+                  href="https://www.google.com/maps/place/Promet+Metal%C3%BArgica+Promet/@-34.9487225,-57.9993909,17z/data=!3m1!4b1!4m6!3m5!1s0x95a2e8042fdd17f9:0x54d73dc1cd711452!8m2!3d-34.9487225!4d-57.9993909!16s%2Fg%2F1w8wc65x"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-3 text-[#94A3B8] hover:text-[#D97706] text-sm transition-colors"
+                  className="flex items-start gap-3 text-[#94A3B8] hover:text-[#D97706] text-sm transition-colors group"
                 >
                   <MapPin className="h-5 w-5 flex-shrink-0 mt-0.5 text-[#D97706]" />
-                  <span>Calle 43 entre 148 y 149, La Plata</span>
+                  <span className="group-hover:underline underline-offset-2">Calle 43 entre 148 y 149, La Plata</span>
                 </a>
               </li>
               <li>

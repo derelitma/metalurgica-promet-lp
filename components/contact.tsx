@@ -7,15 +7,17 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { FieldGroup, Field, FieldLabel } from '@/components/ui/field';
 import { Spinner } from '@/components/ui/spinner';
-import { MapPin, Phone, Clock } from 'lucide-react';
+import { MapPin, Phone, Clock, Navigation } from 'lucide-react';
 import { useWhatsApp } from '@/hooks/use-whatsapp';
+
+const GOOGLE_MAPS_URL = 'https://www.google.com/maps/place/Promet+Metal%C3%BArgica+Promet/@-34.9487225,-57.9993909,17z/data=!3m1!4b1!4m6!3m5!1s0x95a2e8042fdd17f9:0x54d73dc1cd711452!8m2!3d-34.9487225!4d-57.9993909!16s%2Fg%2F1w8wc65x';
 
 const contactInfo = [
   {
     icon: MapPin,
     label: 'Dirección',
     value: 'Calle 43 entre 148 y 149, La Plata',
-    href: 'https://share.google/T0NEuLVzhrZEdZsS9',
+    href: GOOGLE_MAPS_URL,
     target: '_blank',
   },
   {
@@ -160,7 +162,7 @@ export function Contact() {
                         href={info.href}
                         target={info.href.startsWith('http') ? '_blank' : undefined}
                         rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        className="flex items-start gap-4 group cursor-pointer"
+                        className="flex items-start gap-4 group cursor-pointer p-2 -m-2 rounded hover:bg-[#1E293B]/50 transition-colors min-h-[56px]"
                         aria-label={`${info.label}: ${info.value}`}
                       >
                         <div className="w-12 h-12 bg-[#0F172A] border border-[#334155] rounded flex items-center justify-center flex-shrink-0 group-hover:border-[#D97706]/50 transition-colors">
@@ -170,7 +172,7 @@ export function Contact() {
                           <p className="text-[#64748B] text-xs uppercase tracking-[0.15em] mb-1">
                             {info.label}
                           </p>
-                          <p className="text-white font-medium group-hover:text-[#D97706] transition-colors">
+                          <p className="text-white font-medium group-hover:text-[#D97706] group-hover:underline underline-offset-2 transition-colors">
                             {info.value}
                           </p>
                         </div>
@@ -201,7 +203,7 @@ export function Contact() {
                 className="rounded overflow-hidden border border-[#334155] h-[200px]"
               >
                 <iframe
-                  src="https://maps.google.com/maps?q=Calle+43+entre+148+y+149,+La+Plata,+Buenos+Aires,+Argentina&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                  src="https://maps.google.com/maps?q=Promet+Metalurgica+Promet,+Calle+43+entre+148+y+149,+La+Plata&t=&z=16&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) brightness(0.85) contrast(1.1)' }}
@@ -212,7 +214,21 @@ export function Contact() {
                   aria-label="Mapa de ubicación"
                 />
               </motion.div>
-              <p className="text-[#475569] text-xs text-center">15 minutos del centro de La Plata</p>
+              
+              {/* "Cómo llegar" CTA - Mobile friendly tap target */}
+              <div className="flex items-center justify-between gap-4 mt-3">
+                <p className="text-[#475569] text-xs">15 minutos del centro de La Plata</p>
+                <a
+                  href={GOOGLE_MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-[#1E293B] hover:bg-[#334155] border border-[#334155] hover:border-[#D97706]/50 text-white px-4 py-2.5 rounded text-xs font-semibold uppercase tracking-[0.05em] transition-all min-h-[44px]"
+                  aria-label="Ver cómo llegar a Promet en Google Maps"
+                >
+                  <Navigation className="w-4 h-4 text-[#D97706]" />
+                  Cómo llegar
+                </a>
+              </div>
             </div>
 
             {/* Form */}

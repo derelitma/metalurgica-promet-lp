@@ -162,6 +162,10 @@
   body {
     @apply bg-background text-foreground;
   }
+  /* Offset for fixed navbar (eyebrow + nav ~100px) */
+  section[id] {
+    scroll-margin-top: 100px;
+  }
 }
 
 /* Brushed Steel Texture Overlay */
