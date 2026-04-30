@@ -103,7 +103,7 @@ export function Hero() {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-lg md:text-xl text-[#94A3B8] mb-4 max-w-2xl mx-auto"
           >
-            Fabricación e instalación a medida. Presupuesto gratis en 24hs.
+            Fabricación e instalación a medida. Presupuesto gratis en menos de 24hs.
           </motion.p>
 
           {/* Real urgency copy */}

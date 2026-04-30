@@ -20,7 +20,7 @@ const openSans = Open_Sans({
 export const metadata: Metadata = {
   title: 'Metalúrgica Promet LP | Portones, Puertas y Estructuras Metálicas a Medida',
   description:
-    'Fabricación e instalación de portones, puertas, ventanas, escaleras y techos metálicos a medida en La Plata. Más de 60 años de experiencia. Presupuesto gratis en 24/48hs.',
+    'Fabricación e instalación de portones, puertas, ventanas, escaleras y techos metálicos a medida en La Plata. Más de 60 años de experiencia. Presupuesto gratis en menos de 24hs.',
   keywords: [
     'portones metálicos La Plata',
     'puertas metálicas',

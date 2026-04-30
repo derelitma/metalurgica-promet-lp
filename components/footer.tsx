@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Facebook, Instagram, Linkedin, MapPin, Phone, Mail } from 'lucide-react'
+import { Facebook, Instagram, MessageCircle, Mail } from 'lucide-react'
 
 const footerLinks = {
   servicios: [
@@ -19,9 +19,10 @@ const footerLinks = {
 }
 
 const socialLinks = [
-  { icon: Facebook, href: 'https://facebook.com/metalurgicapromet', label: 'Facebook' },
-  { icon: Instagram, href: 'https://instagram.com/metalurgicapromet', label: 'Instagram' },
-  { icon: Linkedin, href: 'https://linkedin.com/company/metalurgicapromet', label: 'LinkedIn' },
+  { icon: Facebook, href: 'https://www.facebook.com/MetalurgicaPromet/', label: 'Facebook' },
+  { icon: Instagram, href: 'https://www.instagram.com/metalurgicaprometlp', label: 'Instagram' },
+  { icon: MessageCircle, href: 'https://wa.me/5492213611947?text=Hola%20Promet!%20Vi%20su%20web%20y%20quiero%20pedir%20un%20presupuesto.', label: 'WhatsApp' },
+  { icon: Mail, href: 'mailto:metalurgicaprometlp@gmail.com', label: 'Email' },
 ]
 
 export function Footer() {

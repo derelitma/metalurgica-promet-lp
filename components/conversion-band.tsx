@@ -34,7 +34,7 @@ export function ConversionBand() {
             ¿Todo claro? Pedí tu presupuesto
           </h2>
           <p className="text-[#111318]/90 text-lg md:text-xl mb-10 max-w-2xl mx-auto font-medium">
-            Presupuesto gratis en 24/48hs. Sin sorpresas, sin trampas. Somos 60 años cumpliendo.
+            Presupuesto gratis en menos de 24hs. Sin sorpresas, sin trampas. Somos 60 años cumpliendo.
           </p>
 
           <motion.a

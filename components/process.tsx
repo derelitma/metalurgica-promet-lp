@@ -14,7 +14,7 @@ const steps = [
     number: '02',
     icon: FileText,
     title: 'Presupuesto',
-    description: 'En 24/48hs recibís presupuesto detallado, sin cargo ni compromiso.',
+    description: 'En menos de 24hs recibís presupuesto detallado, sin cargo ni compromiso.',
   },
   {
     number: '03',
@@ -59,12 +59,24 @@ function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) 
       }`}
       style={{ transitionDelay: `${index * 150}ms` }}
     >
-      {/* Connector line */}
+      {/* Desktop connector line */}
       {!isLast && (
-        <div className="hidden lg:block absolute top-12 left-[calc(50%+3rem)] right-0 h-0.5 bg-promet-orange/30">
+        <div className="hidden lg:block absolute top-12 left-[calc(50%+3rem)] right-0 h-0.5 bg-[#E8751A]/20">
           <div 
-            className={`h-full bg-promet-orange transition-all duration-1000 ${
+            className={`h-full bg-[#E8751A] transition-all duration-1000 ${
               isVisible ? 'w-full' : 'w-0'
+            }`}
+            style={{ transitionDelay: `${index * 150 + 300}ms` }}
+          />
+        </div>
+      )}
+
+      {/* Mobile connector line */}
+      {!isLast && (
+        <div className="lg:hidden absolute top-24 left-1/2 -translate-x-1/2 w-0.5 h-12 bg-[#E8751A]/20">
+          <div 
+            className={`w-full bg-[#E8751A] transition-all duration-1000 ${
+              isVisible ? 'h-full' : 'h-0'
             }`}
             style={{ transitionDelay: `${index * 150 + 300}ms` }}
           />
@@ -74,18 +86,18 @@ function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) 
       <div className="flex flex-col items-center text-center">
         {/* Number badge */}
         <div className="relative mb-4">
-          <div className="w-24 h-24 bg-promet-blue rounded-2xl flex items-center justify-center shadow-lg">
+          <div className="w-24 h-24 bg-[#003366] rounded-2xl flex items-center justify-center shadow-lg">
             <Icon className="h-10 w-10 text-white" />
           </div>
-          <span className="absolute -top-2 -right-2 w-8 h-8 bg-promet-orange rounded-full flex items-center justify-center text-white font-bold text-sm">
+          <span className="absolute -top-2 -right-2 w-8 h-8 bg-[#E8751A] rounded-full flex items-center justify-center text-white font-bold text-sm">
             {step.number}
           </span>
         </div>
 
-        <h3 className="font-sans font-bold text-xl text-promet-gray-dark mb-2">
+        <h3 className="font-sans font-bold text-xl text-[#333333] mb-2">
           {step.title}
         </h3>
-        <p className="text-muted-foreground text-sm leading-relaxed max-w-[250px]">
+        <p className="text-[#666666] text-sm leading-relaxed max-w-[250px]">
           {step.description}
         </p>
       </div>
@@ -95,17 +107,17 @@ function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) 
 
 export function Process() {
   return (
-    <section id="proceso" className="py-20 md:py-28 bg-promet-gray-light">
+    <section id="proceso" className="py-20 md:py-28 bg-[#F5F5F5]">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block text-promet-orange font-semibold text-sm uppercase tracking-wider mb-3">
+          <span className="inline-block text-[#E8751A] font-semibold text-sm uppercase tracking-wider mb-3">
             Cómo Trabajamos
           </span>
-          <h2 className="font-sans font-bold text-3xl md:text-4xl lg:text-5xl text-promet-gray-dark mb-4 text-balance">
+          <h2 className="font-sans font-bold text-3xl md:text-4xl lg:text-5xl text-[#333333] mb-4 text-balance">
             Un proceso simple y transparente
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-[#666666] text-lg">
             Desde el primer contacto hasta la entrega final, te acompañamos en cada paso.
           </p>
         </div>

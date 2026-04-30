@@ -14,14 +14,15 @@ const contactInfo = [
   {
     icon: MapPin,
     label: 'Dirección',
-    value: 'Calle 43 e/ 148 y 149, La Plata',
-    href: 'https://maps.google.com/?q=Calle+43+entre+148+y+149,+La+Plata',
+    value: 'Calle 43 entre 148 y 149, La Plata',
+    href: 'https://share.google/T0NEuLVzhrZEdZsS9',
+    target: '_blank',
   },
   {
     icon: Phone,
     label: 'WhatsApp',
-    value: '+54 9 221 555-1234',
-    href: 'https://wa.me/5492215551234',
+    value: '+54 9 221 361-1947',
+    href: 'https://wa.me/5492213611947?text=Hola%20Promet!%20Vi%20su%20web%20y%20quiero%20pedir%20un%20presupuesto.',
   },
   {
     icon: Clock,
@@ -403,11 +404,11 @@ export function Contact() {
             </motion.svg>
 
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
-              ¡Consulta recibida, {submittedData.nombre}!
+              ¡Listo, {submittedData.nombre}!
             </h2>
 
             <p className="text-[#94A3B8] text-lg mb-8">
-              Un técnico de Promet va a contactarte en menos de 24hs al{' '}
+              Tu presupuesto listo en menos de 24hs al{' '}
               <span className="text-white font-semibold">{submittedData.whatsapp}</span>.
             </p>
 

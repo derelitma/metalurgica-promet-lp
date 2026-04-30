@@ -1,6 +1,6 @@
 'use client';
 
-const WA_BASE = 'https://wa.me/5492215551234?text=';
+const WA_BASE = 'https://wa.me/5492213611947?text=';
 
 const messages = {
   hero: 'Hola Promet! Vi su web y quiero pedir un presupuesto general.',
@@ -12,7 +12,7 @@ const messages = {
   especiales: 'Hola Promet! Tengo un trabajo especial para consultar.',
   gallery: 'Hola! Vi los trabajos en su web y me gustaría algo similar.',
   testimonials: 'Hola Promet! Vi las recomendaciones y quiero pedir un presupuesto.',
-  floating: 'Hola Promet! Vi su web y quiero consultar.',
+  floating: 'Hola Promet! Vi su web y quiero pedir un presupuesto.',
   form_fallback: 'Hola Promet! Intenté mandar el formulario. ¿Me pueden ayudar?',
   mobile_footer: 'Hola! Quiero pedir un presupuesto.',
 };
