@@ -84,7 +84,7 @@ export function About() {
             {/* Big 60 with stroke */}
             <motion.div
               animate={{ opacity: [0.7, 1, 0.7] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'ease-in-out' }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               className="relative"
               style={{
                 fontSize: '260px',
