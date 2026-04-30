@@ -101,19 +101,19 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-lg md:text-xl text-[#94A3B8] mb-4 max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-[#94A3B8] mb-2 max-w-2xl mx-auto"
           >
             Fabricación e instalación a medida. Presupuesto gratis en menos de 24hs.
           </motion.p>
 
-          {/* Real urgency copy */}
+          {/* Real urgency copy - SINGLE INSTANCE */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="text-sm text-[#94A3B8] mb-10"
+            className="text-sm text-[#94A3B8] mb-12"
           >
-            Respondemos hoy. Más de 50 consultas esta semana.
+            Respondemos hoy.
           </motion.p>
 
           {/* CTA buttons */}
@@ -148,27 +148,18 @@ export function Hero() {
             </motion.button>
           </motion.div>
 
-          {/* Real urgency below CTAs */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="text-xs text-[#94A3B8]"
-          >
-            Respondemos hoy. Más de 50 consultas esta semana.
-          </motion.p>
         </div>
       </div>
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-[#94A3B8] text-xs uppercase tracking-widest">Desplazá</span>
-          <ChevronDown className="w-5 h-5 text-[#E8751A] animate-scroll-indicator" />
+        <div className="flex flex-col items-center gap-1">
+          <span className="text-[#4A4A48] text-[10px] uppercase tracking-widest font-medium">Desplazá</span>
+          <ChevronDown className="w-4 h-4 text-[#4A4A48] animate-scroll-indicator" />
         </div>
       </motion.div>
     </section>
