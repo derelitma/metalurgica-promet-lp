@@ -54,7 +54,6 @@ function ServiceCard({
   const [isVisible, setIsVisible] = useState(false);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const ref = useRef<HTMLDivElement>(null);
-  const wa = useWhatsApp(service.id as any);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -71,8 +70,8 @@ function ServiceCard({
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
-    const x = (e.clientY - rect.top - rect.height / 2) / 20;
-    const y = -(e.clientX - rect.left - rect.width / 2) / 20;
+    const x = (e.clientY - rect.top - rect.height / 2) / 25;
+    const y = -(e.clientX - rect.left - rect.width / 2) / 25;
     setRotation({ x, y });
   };
 
@@ -94,27 +93,28 @@ function ServiceCard({
         perspective: '1000px',
       }}
     >
-      <Card className="bg-[#1A1C20] border border-[#E8751A]/10 hover:border-[#E8751A] h-full transition-all duration-300 overflow-hidden group hover:shadow-[0_0_24px_rgba(232,117,26,0.12)] hover:-translate-y-1">
-        <CardContent className="p-8">
+      <Card className="bg-[#1E293B] border border-[#334155] hover:border-[#D97706]/50 h-full transition-all duration-300 overflow-hidden group hover:shadow-[0_0_30px_rgba(217,119,6,0.1)] hover:-translate-y-1 rounded steel-texture">
+        <CardContent className="p-6">
+          {/* Premium tag */}
           <div className="mb-4">
-            <div className="inline-block px-3 py-1 bg-[#E8751A]/10 rounded-full mb-4">
-              <span className="text-[#E8751A] text-xs font-bold uppercase">Servicio</span>
-            </div>
+            <span className="inline-block px-2 py-1 bg-[#0F172A] border border-[#334155] rounded text-[#64748B] text-[10px] font-bold uppercase tracking-[0.15em]">
+              Servicio
+            </span>
           </div>
 
-          <h3 className="text-2xl font-bold text-white mb-2">{service.title}</h3>
+          <h3 className="text-xl font-bold text-white mb-2 tracking-[0.02em]">{service.title}</h3>
 
-          <p className="text-[#E8751A] font-bold text-lg mb-3">{service.benefit}</p>
+          <p className="text-[#D97706] font-bold text-base mb-3">{service.benefit}</p>
 
           <p className="text-[#94A3B8] text-sm mb-6 leading-relaxed">{service.description}</p>
 
           <motion.a
-            href={`https://wa.me/5492215551234?text=${encodeURIComponent(service.waMessage)}`}
+            href={`https://wa.me/5492213611947?text=${encodeURIComponent(service.waMessage)}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[#E8751A] font-bold text-sm hover:gap-3 transition-all"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center gap-2 text-[#D97706] font-bold text-sm hover:gap-3 transition-all group-hover:text-[#F59E0B] tracking-[0.05em] uppercase"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             data-cta
           >
             CONSULTAR
@@ -128,7 +128,7 @@ function ServiceCard({
 
 export function Services() {
   return (
-    <section className="py-20 md:py-32 bg-[#111318] relative overflow-hidden">
+    <section id="servicios" className="py-20 md:py-32 bg-[#0F172A] relative overflow-hidden steel-texture">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -137,7 +137,10 @@ export function Services() {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+          <span className="inline-block text-[#D97706] font-semibold text-[13px] uppercase tracking-[0.15em] mb-3">
+            Nuestros Servicios
+          </span>
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-[0.02em]">
             Soluciones Metálicas Completas
           </h2>
           <p className="text-[#94A3B8] text-lg">

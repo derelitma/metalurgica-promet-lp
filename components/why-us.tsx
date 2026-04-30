@@ -64,14 +64,14 @@ function ReasonCard({ reason, index }: { reason: typeof reasons[0]; index: numbe
       }`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
-      <div className="flex-shrink-0 w-12 h-12 bg-promet-orange/10 rounded-xl flex items-center justify-center">
-        <Icon className="h-6 w-6 text-promet-orange" />
+      <div className="flex-shrink-0 w-12 h-12 bg-[#D97706]/10 border border-[#D97706]/20 rounded flex items-center justify-center">
+        <Icon className="h-6 w-6 text-[#D97706]" />
       </div>
       <div>
-        <h3 className="font-sans font-semibold text-lg text-promet-gray-dark mb-1">
+        <h3 className="font-semibold text-lg text-[#1E293B] mb-1 tracking-[0.02em]">
           {reason.title}
         </h3>
-        <p className="text-muted-foreground text-sm leading-relaxed">
+        <p className="text-[#64748B] text-sm leading-relaxed">
           {reason.description}
         </p>
       </div>
@@ -81,18 +81,18 @@ function ReasonCard({ reason, index }: { reason: typeof reasons[0]; index: numbe
 
 export function WhyUs() {
   return (
-    <section className="py-20 md:py-28 bg-white">
+    <section id="nosotros" className="py-20 md:py-28 bg-white">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Column - Content */}
           <div>
-            <span className="inline-block text-promet-orange font-semibold text-sm uppercase tracking-wider mb-3">
+            <span className="inline-block text-[#D97706] font-semibold text-[13px] uppercase tracking-[0.15em] mb-3">
               Por Qué Elegirnos
             </span>
-            <h2 className="font-sans font-bold text-3xl md:text-4xl lg:text-5xl text-promet-gray-dark mb-6 text-balance">
+            <h2 className="font-bold text-3xl md:text-4xl lg:text-5xl text-[#1E293B] mb-6 text-balance tracking-[0.02em]">
               La diferencia está en los detalles
             </h2>
-            <p className="text-muted-foreground text-lg mb-10">
+            <p className="text-[#64748B] text-lg mb-10">
               No solo fabricamos piezas, construimos relaciones duraderas basadas en la confianza y la excelencia. 
               Cada proyecto es una oportunidad para demostrar nuestro compromiso.
             </p>
@@ -105,22 +105,22 @@ export function WhyUs() {
 
           {/* Right Column - Visual */}
           <div className="relative">
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
+            <div className="relative aspect-[4/5] rounded overflow-hidden border border-[#E2E8F0]">
               <img
                 src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1470"
                 alt="Taller metalúrgico Promet"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-promet-blue/60 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/70 to-transparent" />
             </div>
-            {/* Floating badge */}
-            <div className="absolute -bottom-6 -left-6 md:bottom-8 md:-left-8 bg-white rounded-2xl shadow-2xl p-6 max-w-[200px]">
-              <div className="font-sans font-bold text-5xl text-promet-orange mb-1">60</div>
-              <div className="text-promet-gray-dark font-semibold">Años de</div>
-              <div className="text-promet-gray-dark font-semibold">Excelencia</div>
+            {/* Premium Floating Badge */}
+            <div className="absolute -bottom-6 -left-6 md:bottom-8 md:-left-8 bg-white rounded border border-[#E2E8F0] shadow-xl p-6 max-w-[200px]">
+              <div className="font-black text-5xl bg-gradient-to-r from-[#D97706] to-[#B45309] bg-clip-text text-transparent mb-1">60</div>
+              <div className="text-[#1E293B] font-semibold tracking-[0.02em]">Años de</div>
+              <div className="text-[#1E293B] font-semibold tracking-[0.02em]">Excelencia</div>
             </div>
-            {/* Decorative element */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 border-4 border-promet-orange rounded-2xl -z-10" />
+            {/* Decorative corner element */}
+            <div className="absolute -top-3 -right-3 w-20 h-20 border-2 border-[#D97706]/30 rounded -z-10" />
           </div>
         </div>
       </div>

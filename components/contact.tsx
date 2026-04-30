@@ -82,7 +82,6 @@ export function Contact() {
     setState('validating');
     setErrors({});
 
-    // Simulate validation delay
     await new Promise((resolve) => setTimeout(resolve, 300));
 
     const newErrors = validateForm(formData);
@@ -93,11 +92,9 @@ export function Contact() {
       return;
     }
 
-    // Trigger submit
     setState('submitting');
     setSubmittedData(formData);
 
-    // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     setState('success');
@@ -124,7 +121,7 @@ export function Contact() {
   // IDLE STATE
   if (state === 'idle' && !submittedData) {
     return (
-      <section id="contacto" className="py-20 bg-gradient-to-b from-[#1A1C20] to-[#111318]">
+      <section id="contacto" className="py-20 bg-gradient-to-b from-[#1E293B] to-[#0F172A] steel-texture">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
             <motion.div
@@ -133,8 +130,10 @@ export function Contact() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <p className="text-[#94A3B8] text-sm mb-2">CONSULTÁ AHORA</p>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              <span className="inline-block text-[#D97706] font-semibold text-[13px] uppercase tracking-[0.15em] mb-3">
+                Contacto
+              </span>
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-[0.02em]">
                 Pedí tu presupuesto
               </h2>
               <p className="text-[#94A3B8] text-lg">
@@ -164,21 +163,25 @@ export function Contact() {
                         className="flex items-start gap-4 group cursor-pointer"
                         aria-label={`${info.label}: ${info.value}`}
                       >
-                        <Icon className="w-6 h-6 text-[#E8751A] flex-shrink-0 mt-1 group-hover:scale-110 transition-transform" />
+                        <div className="w-12 h-12 bg-[#0F172A] border border-[#334155] rounded flex items-center justify-center flex-shrink-0 group-hover:border-[#D97706]/50 transition-colors">
+                          <Icon className="w-5 h-5 text-[#D97706]" />
+                        </div>
                         <div>
-                          <p className="text-[#94A3B8] text-sm uppercase tracking-wide mb-1">
+                          <p className="text-[#64748B] text-xs uppercase tracking-[0.15em] mb-1">
                             {info.label}
                           </p>
-                          <p className="text-white font-medium group-hover:text-[#E8751A] transition-colors">
+                          <p className="text-white font-medium group-hover:text-[#D97706] transition-colors">
                             {info.value}
                           </p>
                         </div>
                       </a>
                     ) : (
                       <div className="flex items-start gap-4">
-                        <Icon className="w-6 h-6 text-[#E8751A] flex-shrink-0 mt-1" />
+                        <div className="w-12 h-12 bg-[#0F172A] border border-[#334155] rounded flex items-center justify-center flex-shrink-0">
+                          <Icon className="w-5 h-5 text-[#D97706]" />
+                        </div>
                         <div>
-                          <p className="text-[#94A3B8] text-sm uppercase tracking-wide mb-1">
+                          <p className="text-[#64748B] text-xs uppercase tracking-[0.15em] mb-1">
                             {info.label}
                           </p>
                           <p className="text-white font-medium">{info.value}</p>
@@ -195,7 +198,7 @@ export function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="rounded-xl overflow-hidden border border-white/5 h-[200px]"
+                className="rounded overflow-hidden border border-[#334155] h-[200px]"
               >
                 <iframe
                   src="https://maps.google.com/maps?q=Calle+43+entre+148+y+149,+La+Plata,+Buenos+Aires,+Argentina&t=&z=16&ie=UTF8&iwloc=&output=embed"
@@ -209,7 +212,7 @@ export function Contact() {
                   aria-label="Mapa de ubicación"
                 />
               </motion.div>
-              <p className="text-[#4A4A48] text-xs text-center">📍 15 minutos del centro de La Plata</p>
+              <p className="text-[#475569] text-xs text-center">15 minutos del centro de La Plata</p>
             </div>
 
             {/* Form */}
@@ -222,20 +225,20 @@ export function Contact() {
             >
               <form
                 onSubmit={handleValidate}
-                className="bg-[#111318] rounded-xl border border-white/5 p-8 space-y-6"
+                className="bg-[#0F172A] rounded border border-[#334155] p-8 space-y-6"
               >
                 <FieldGroup>
                   <Field>
-                    <FieldLabel htmlFor="nombre">Nombre completo</FieldLabel>
+                    <FieldLabel htmlFor="nombre" className="text-[#94A3B8] text-sm uppercase tracking-[0.1em]">Nombre completo</FieldLabel>
                     <Input
                       id="nombre"
                       type="text"
                       placeholder="Ej: Juan Pérez"
                       value={formData.nombre}
                       onChange={(e) => handleChange('nombre', e.target.value)}
-                      className={`bg-[#0A0B0D] border ${
-                        errors.nombre ? 'border-[#EF4444]' : 'border-white/10'
-                      } text-white placeholder-[#4A4A48] focus:border-[#E8751A] transition-all`}
+                      className={`bg-[#1E293B] border ${
+                        errors.nombre ? 'border-red-500' : 'border-[#334155]'
+                      } text-white placeholder-[#475569] focus:border-[#D97706] transition-all rounded`}
                       aria-label="Nombre completo"
                       aria-invalid={!!errors.nombre}
                     />
@@ -243,7 +246,7 @@ export function Contact() {
                       <motion.p
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-[#EF4444] text-xs mt-1"
+                        className="text-red-500 text-xs mt-1"
                       >
                         {errors.nombre}
                       </motion.p>
@@ -253,16 +256,16 @@ export function Contact() {
 
                 <FieldGroup>
                   <Field>
-                    <FieldLabel htmlFor="whatsapp">Tu WhatsApp</FieldLabel>
+                    <FieldLabel htmlFor="whatsapp" className="text-[#94A3B8] text-sm uppercase tracking-[0.1em]">Tu WhatsApp</FieldLabel>
                     <Input
                       id="whatsapp"
                       type="tel"
                       placeholder="Ej: 221 555-1234"
                       value={formData.whatsapp}
                       onChange={(e) => handleChange('whatsapp', e.target.value)}
-                      className={`bg-[#0A0B0D] border ${
-                        errors.whatsapp ? 'border-[#EF4444]' : 'border-white/10'
-                      } text-white placeholder-[#4A4A48] focus:border-[#E8751A] transition-all`}
+                      className={`bg-[#1E293B] border ${
+                        errors.whatsapp ? 'border-red-500' : 'border-[#334155]'
+                      } text-white placeholder-[#475569] focus:border-[#D97706] transition-all rounded`}
                       aria-label="Número de WhatsApp"
                       aria-invalid={!!errors.whatsapp}
                     />
@@ -270,7 +273,7 @@ export function Contact() {
                       <motion.p
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-[#EF4444] text-xs mt-1"
+                        className="text-red-500 text-xs mt-1"
                       >
                         {errors.whatsapp}
                       </motion.p>
@@ -280,14 +283,14 @@ export function Contact() {
 
                 <FieldGroup>
                   <Field>
-                    <FieldLabel htmlFor="servicio">¿Qué necesitás?</FieldLabel>
+                    <FieldLabel htmlFor="servicio" className="text-[#94A3B8] text-sm uppercase tracking-[0.1em]">¿Qué necesitás?</FieldLabel>
                     <select
                       id="servicio"
                       value={formData.servicio}
                       onChange={(e) => handleChange('servicio', e.target.value)}
-                      className={`w-full bg-[#0A0B0D] border ${
-                        errors.servicio ? 'border-[#EF4444]' : 'border-white/10'
-                      } text-white placeholder-[#4A4A48] rounded-md px-3 py-2 focus:border-[#E8751A] transition-all`}
+                      className={`w-full bg-[#1E293B] border ${
+                        errors.servicio ? 'border-red-500' : 'border-[#334155]'
+                      } text-white rounded px-3 py-2 focus:border-[#D97706] transition-all`}
                       aria-label="Servicio requerido"
                       aria-invalid={!!errors.servicio}
                     >
@@ -303,7 +306,7 @@ export function Contact() {
                       <motion.p
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-[#EF4444] text-xs mt-1"
+                        className="text-red-500 text-xs mt-1"
                       >
                         {errors.servicio}
                       </motion.p>
@@ -313,42 +316,41 @@ export function Contact() {
 
                 <FieldGroup>
                   <Field>
-                    <FieldLabel htmlFor="mensaje">Tu mensaje (opcional)</FieldLabel>
+                    <FieldLabel htmlFor="mensaje" className="text-[#94A3B8] text-sm uppercase tracking-[0.1em]">Tu mensaje (opcional)</FieldLabel>
                     <Textarea
                       id="mensaje"
                       placeholder="Contanos más detalles sobre lo que necesitás..."
                       value={formData.mensaje}
                       onChange={(e) => handleChange('mensaje', e.target.value)}
-                      className="bg-[#0A0B0D] border border-white/10 text-white placeholder-[#4A4A48] focus:border-[#E8751A] transition-all"
+                      className="bg-[#1E293B] border border-[#334155] text-white placeholder-[#475569] focus:border-[#D97706] transition-all rounded"
                       rows={4}
                       aria-label="Mensaje adicional"
                     />
                   </Field>
                 </FieldGroup>
 
-              <Button
-                type="submit"
-                disabled={state === 'submitting'}
-                className="w-full bg-[#E8751A] hover:bg-[#FF8533] text-white font-bold py-4 text-lg uppercase h-14"
-              >
-                {state === 'submitting' ? (
-                  <>
-                    <Spinner className="mr-2 h-4 w-4" />
-                    Enviando...
-                  </>
-                ) : state === 'success' ? (
-                  '✓ Presupuesto en camino'
-                ) : (
-                  'QUIERO MI PRESUPUESTO AHORA →'
-                )}
-              </Button>
+                <Button
+                  type="submit"
+                  disabled={state === 'submitting'}
+                  className="w-full bg-gradient-to-r from-[#D97706] to-[#B45309] hover:from-[#F59E0B] hover:to-[#D97706] text-white font-bold py-4 text-sm uppercase tracking-[0.05em] h-14 rounded btn-premium"
+                >
+                  {state === 'submitting' ? (
+                    <>
+                      <Spinner className="mr-2 h-4 w-4" />
+                      Enviando...
+                    </>
+                  ) : state === 'success' ? (
+                    'Presupuesto en camino'
+                  ) : (
+                    'QUIERO MI PRESUPUESTO AHORA'
+                  )}
+                </Button>
 
-              {/* Privacy & trust copy */}
-              <p className="text-[#4A4A48] text-xs text-center">
-                🔒 Tu información es privada. Solo te contactamos para el presupuesto. Nada más.
-              </p>
+                <p className="text-[#475569] text-xs text-center">
+                  Tu información es privada. Solo te contactamos para el presupuesto.
+                </p>
 
-                <p className="text-center text-xs text-[#4A4A48] italic">
+                <p className="text-center text-xs text-[#475569] italic">
                   Si algo no queda como acordamos, lo resolvemos. Siempre.
                 </p>
               </form>
@@ -362,7 +364,7 @@ export function Contact() {
   // SUBMITTING STATE
   if (state === 'submitting') {
     return (
-      <section className="py-20 bg-gradient-to-b from-[#1A1C20] to-[#111318]">
+      <section className="py-20 bg-gradient-to-b from-[#1E293B] to-[#0F172A] steel-texture">
         <div className="max-w-6xl mx-auto px-4 flex justify-center items-center min-h-[400px]">
           <motion.div
             className="text-center"
@@ -370,7 +372,7 @@ export function Contact() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
           >
-            <Spinner className="w-12 h-12 text-[#E8751A] mx-auto mb-4" />
+            <Spinner className="w-12 h-12 text-[#D97706] mx-auto mb-4" />
             <p className="text-[#94A3B8] text-lg">Enviando tu consulta...</p>
           </motion.div>
         </div>
@@ -381,17 +383,16 @@ export function Contact() {
   // SUCCESS STATE
   if (state === 'success' && submittedData) {
     return (
-      <section className="py-20 bg-gradient-to-b from-[#1A1C20] to-[#111318]">
+      <section className="py-20 bg-gradient-to-b from-[#1E293B] to-[#0F172A] steel-texture">
         <div className="max-w-2xl mx-auto px-4">
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="bg-[#111318] rounded-xl border border-[#25D366]/20 p-12 text-center"
+            className="bg-[#0F172A] rounded border border-[#334155] p-12 text-center shadow-[0_0_40px_rgba(217,119,6,0.1)]"
           >
-            {/* Animated Checkmark SVG */}
             <motion.svg
-              className="w-16 h-16 mx-auto mb-6 text-[#25D366]"
+              className="w-16 h-16 mx-auto mb-6 text-[#22C55E]"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -403,7 +404,7 @@ export function Contact() {
               <polyline points="20 6 9 17 4 12" />
             </motion.svg>
 
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 tracking-[0.02em]">
               ¡Listo, {submittedData.nombre}!
             </h2>
 
@@ -417,23 +418,23 @@ export function Contact() {
                 href={waFallback.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block bg-[#25D366] hover:bg-[#20BA5C] text-white py-3 rounded-lg font-bold uppercase text-sm transition-colors"
-                whileHover={{ scale: 1.05 }}
+                className="block bg-[#22C55E] hover:bg-[#16A34A] text-white py-3 rounded font-bold uppercase text-sm tracking-[0.05em] transition-colors"
+                whileHover={{ scale: 1.02 }}
                 aria-label="Escribir por WhatsApp"
               >
-                También podés escribirnos por WhatsApp →
+                También podés escribirnos por WhatsApp
               </motion.a>
 
               <button
                 onClick={resetForm}
-                className="block w-full border border-white/10 hover:border-white/20 text-white py-3 rounded-lg font-bold uppercase text-sm transition-colors"
+                className="block w-full border border-[#334155] hover:border-[#D97706]/50 text-white py-3 rounded font-bold uppercase text-sm tracking-[0.05em] transition-colors"
                 aria-label="Enviar otro presupuesto"
               >
                 Enviar otra consulta
               </button>
             </div>
 
-            <p className="text-[#4A4A48] text-xs italic mt-8">
+            <p className="text-[#475569] text-xs italic mt-8">
               Ya somos 60 años cumpliendo. Este mensaje no es la excepción.
             </p>
           </motion.div>
@@ -445,14 +446,14 @@ export function Contact() {
   // ERROR STATE
   if (state === 'error') {
     return (
-      <section className="py-20 bg-gradient-to-b from-[#1A1C20] to-[#111318]">
+      <section className="py-20 bg-gradient-to-b from-[#1E293B] to-[#0F172A] steel-texture">
         <div className="max-w-2xl mx-auto px-4">
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-[#111318] rounded-xl border border-[#EF4444]/20 p-12 text-center"
+            className="bg-[#0F172A] rounded border border-red-500/20 p-12 text-center"
           >
-            <h2 className="text-2xl font-bold text-white mb-4">
+            <h2 className="text-2xl font-bold text-white mb-4 tracking-[0.02em]">
               Algo salió mal. No te preocupes —
             </h2>
 
@@ -460,16 +461,16 @@ export function Contact() {
               href={waFallback.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-[#E8751A] hover:bg-[#FF8533] text-white py-3 px-6 rounded-lg font-bold uppercase text-sm transition-colors mb-4"
-              whileHover={{ scale: 1.05 }}
+              className="inline-block bg-gradient-to-r from-[#D97706] to-[#B45309] text-white py-3 px-6 rounded font-bold uppercase text-sm tracking-[0.05em] transition-colors mb-4"
+              whileHover={{ scale: 1.02 }}
               aria-label="Escribir directamente por WhatsApp"
             >
-              Escribinos directo por WhatsApp →
+              Escribinos directo por WhatsApp
             </motion.a>
 
             <button
               onClick={resetForm}
-              className="block w-full border border-white/10 hover:border-white/20 text-white py-3 rounded-lg font-bold uppercase text-sm transition-colors mt-4"
+              className="block w-full border border-[#334155] hover:border-[#D97706]/50 text-white py-3 rounded font-bold uppercase text-sm tracking-[0.05em] transition-colors mt-4"
               aria-label="Intentar formulario de nuevo"
             >
               Volver a intentar

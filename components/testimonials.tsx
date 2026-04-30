@@ -60,20 +60,20 @@ function TestimonialCard({ testimonial, index }: { testimonial: typeof testimoni
       }`}
       style={{ transitionDelay: `${index * 150}ms` }}
     >
-      <Card className="h-full bg-white border-0 shadow-lg hover:shadow-xl transition-shadow">
+      <Card className="h-full bg-white border border-[#E2E8F0] hover:border-[#D97706]/30 shadow-sm hover:shadow-lg transition-all rounded">
         <CardContent className="p-6 md:p-8">
           {/* Quote icon */}
-          <Quote className="h-10 w-10 text-promet-orange/20 mb-4" />
+          <Quote className="h-10 w-10 text-[#D97706]/20 mb-4" />
 
           {/* Rating */}
           <div className="flex gap-1 mb-4">
             {Array.from({ length: testimonial.rating }).map((_, i) => (
-              <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+              <Star key={i} className="h-5 w-5 text-[#D97706] fill-[#D97706]" />
             ))}
           </div>
 
           {/* Content */}
-          <p className="text-promet-gray-dark leading-relaxed mb-6 italic">
+          <p className="text-[#1E293B] leading-relaxed mb-6 italic">
             &ldquo;{testimonial.content}&rdquo;
           </p>
 
@@ -82,16 +82,16 @@ function TestimonialCard({ testimonial, index }: { testimonial: typeof testimoni
             <img
               src={testimonial.image}
               alt={testimonial.name}
-              className="w-14 h-14 rounded-full object-cover"
+              className="w-14 h-14 rounded object-cover border border-[#E2E8F0]"
             />
             <div>
-              <div className="font-semibold text-promet-gray-dark">
+              <div className="font-semibold text-[#1E293B] tracking-[0.02em]">
                 {testimonial.name}
               </div>
-              <div className="text-sm text-muted-foreground">
+              <div className="text-sm text-[#64748B]">
                 {testimonial.role}
               </div>
-              <div className="text-sm text-promet-orange font-medium">
+              <div className="text-sm text-[#D97706] font-medium">
                 {testimonial.company}
               </div>
             </div>
@@ -108,13 +108,13 @@ export function Testimonials() {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block text-promet-orange font-semibold text-sm uppercase tracking-wider mb-3">
+          <span className="inline-block text-[#D97706] font-semibold text-[13px] uppercase tracking-[0.15em] mb-3">
             Testimonios
           </span>
-          <h2 className="font-sans font-bold text-3xl md:text-4xl lg:text-5xl text-promet-gray-dark mb-4 text-balance">
+          <h2 className="font-bold text-3xl md:text-4xl lg:text-5xl text-[#1E293B] mb-4 text-balance tracking-[0.02em]">
             Lo que dicen nuestros clientes
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-[#64748B] text-lg">
             La confianza de nuestros clientes es nuestro mayor activo. Más de 500 empresas nos eligen.
           </p>
         </div>

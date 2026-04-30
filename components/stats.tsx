@@ -33,12 +33,16 @@ function AnimatedNumber({ value, duration = 2000 }: { value: number; duration?: 
     return () => observer.disconnect();
   }, [value, duration]);
 
-  return <span ref={ref}>{displayValue}</span>;
+  return <span ref={ref}>{displayValue.toLocaleString('es-AR')}</span>;
 }
 
 export function Stats() {
   return (
-    <section className="py-20 md:py-32 bg-[#1A1C20] relative overflow-hidden">
+    <section className="py-20 md:py-32 bg-[#1E293B] relative overflow-hidden steel-texture">
+      {/* Subtle decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#334155] to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#334155] to-transparent" />
+      
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -51,12 +55,12 @@ export function Stats() {
               className="text-center md:text-left"
             >
               <div className="mb-4">
-                <span className="text-7xl md:text-9xl font-black text-[#E8751A] leading-none">
+                <span className="text-7xl md:text-9xl font-black bg-gradient-to-r from-[#D97706] to-[#F59E0B] bg-clip-text text-transparent leading-none">
                   +<AnimatedNumber value={60} />
                 </span>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-2">años en La Plata</h3>
-              <p className="text-[#94A3B8] italic text-sm">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-2 tracking-[0.02em]">años en La Plata</h3>
+              <p className="text-[#64748B] italic text-sm">
                 3 generaciones, mismo apellido, misma calle
               </p>
             </motion.div>
@@ -70,12 +74,12 @@ export function Stats() {
               className="text-center md:text-left"
             >
               <div className="mb-4">
-                <span className="text-7xl md:text-9xl font-black text-[#E8751A] leading-none">
+                <span className="text-7xl md:text-9xl font-black bg-gradient-to-r from-[#D97706] to-[#F59E0B] bg-clip-text text-transparent leading-none">
                   +<AnimatedNumber value={12000} duration={2500} />
                 </span>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Obras entregadas</h3>
-              <p className="text-[#94A3B8] italic text-sm">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-2 tracking-[0.02em]">Obras entregadas</h3>
+              <p className="text-[#64748B] italic text-sm">
                 Trabajos realizados en La Plata y zona desde 1960
               </p>
             </motion.div>
