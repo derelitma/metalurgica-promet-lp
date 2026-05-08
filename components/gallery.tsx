@@ -36,7 +36,7 @@ export function Gallery() {
 
   return (
     <>
-      <section id="trabajos" className="py-20 md:py-32 bg-[#1E293B] relative overflow-hidden steel-texture">
+      <section id="trabajos" className="py-20 md:py-32 bg-white relative overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -45,13 +45,16 @@ export function Gallery() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="inline-block text-[#D97706] font-semibold text-[13px] uppercase tracking-[0.15em] mb-3">
+            <span className="inline-block text-[#E8751A] font-semibold text-[13px] uppercase tracking-[0.15em] mb-3">
               Portfolio
             </span>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-[0.02em]">
+            <h2 
+              className="text-4xl md:text-5xl font-black text-[#111318] mb-4 tracking-[0.02em]"
+              style={{ fontFamily: 'var(--font-barlow-condensed), Barlow Condensed, sans-serif' }}
+            >
               Trabajos realizados en La Plata
             </h2>
-            <p className="text-[#94A3B8] text-lg max-w-2xl mx-auto">
+            <p className="text-[#4A4A48] text-lg max-w-2xl mx-auto">
               De City Bell a Berisso. Lo que hacemos vale la pena.
             </p>
           </motion.div>
@@ -66,27 +69,27 @@ export function Gallery() {
                 transition={{ duration: 0.6, delay: index * 0.05 }}
                 viewport={{ once: true }}
                 onClick={() => setSelectedIndex(index)}
-                className="group relative h-64 overflow-hidden rounded bg-gradient-to-br from-[#334155]/50 to-[#0F172A]/50 border border-[#334155] hover:border-[#D97706]/50 transition-all cursor-pointer hover:shadow-[0_0_30px_rgba(217,119,6,0.1)]"
+                className="group relative h-64 overflow-hidden rounded-xl bg-[#F7F7F5] border border-[rgba(0,0,0,0.06)] hover:border-[#E8751A]/50 transition-all cursor-pointer hover:shadow-[0_8px_24px_rgba(0,0,0,0.10)]"
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0F172A]/90 z-10" />
-                <div className="absolute inset-0 bg-[#D97706]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#111318]/90 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-[#E8751A]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <div className="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="text-center">
                     <p className="text-white font-bold text-lg tracking-[0.02em]">{project.title}</p>
-                    <p className="text-[#D97706] text-sm">· {project.neighborhood}</p>
+                    <p className="text-[#E8751A] text-sm">- {project.neighborhood}</p>
                   </div>
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-0 p-4 z-20 bg-gradient-to-t from-[#0F172A] to-transparent">
+                <div className="absolute bottom-0 left-0 right-0 p-4 z-20 bg-gradient-to-t from-[#111318]/80 to-transparent group-hover:opacity-0 transition-opacity">
                   <p className="text-white font-bold text-sm tracking-[0.02em]">{project.title}</p>
-                  <p className="text-[#D97706] text-xs">· {project.neighborhood}</p>
+                  <p className="text-[#E8751A] text-xs">- {project.neighborhood}</p>
                 </div>
               </motion.button>
             ))}
           </div>
 
-          {/* Premium CTA Card - NOT a flat orange band */}
+          {/* Premium CTA Card - Orange Band */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -94,22 +97,21 @@ export function Gallery() {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto"
           >
-            <div className="relative bg-[#0F172A] rounded border-t-2 border-[#D97706] p-12 text-center shadow-[0_0_40px_rgba(217,119,6,0.1)]">
-              {/* Decorative corner accents */}
-              <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-[#D97706] rounded-tl" />
-              <div className="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 border-[#D97706] rounded-tr" />
-              
-              <h3 className="text-3xl md:text-4xl font-black text-white mb-2 tracking-[0.02em]">
+            <div className="relative bg-[#E8751A] rounded-xl p-12 text-center shadow-lg">
+              <h3 
+                className="text-3xl md:text-4xl font-black text-white mb-2 tracking-[0.02em]"
+                style={{ fontFamily: 'var(--font-barlow-condensed), Barlow Condensed, sans-serif' }}
+              >
                 Tu casa puede quedar así.
               </h3>
-              <p className="text-[#94A3B8] text-lg mb-8">
+              <p className="text-white/90 text-lg mb-8">
                 Un presupuesto gratis es todo lo que necesitás.
               </p>
               <motion.a
                 href={wa.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-gradient-to-r from-[#D97706] to-[#B45309] hover:from-[#F59E0B] hover:to-[#D97706] text-white px-8 py-4 rounded font-bold uppercase tracking-[0.05em] text-sm transition-all btn-premium shadow-lg hover:shadow-[0_0_30px_rgba(217,119,6,0.25)]"
+                className="inline-block bg-white hover:bg-[#F7F7F5] text-[#E8751A] px-8 py-4 rounded-lg font-bold uppercase tracking-[0.05em] text-sm transition-all shadow-lg"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 data-cta
@@ -124,22 +126,22 @@ export function Gallery() {
 
       {/* Lightbox Modal */}
       <Dialog open={selectedIndex !== null} onOpenChange={(open) => !open && setSelectedIndex(null)}>
-        <DialogContent className="max-w-4xl bg-[#0F172A] border-[#334155]">
+        <DialogContent className="max-w-4xl bg-white border-[rgba(0,0,0,0.06)]">
           <DialogTitle className="sr-only">Galería de proyectos</DialogTitle>
           <button
             onClick={() => setSelectedIndex(null)}
-            className="absolute top-4 right-4 z-50 p-2 hover:bg-[#1E293B] rounded transition-colors"
+            className="absolute top-4 right-4 z-50 p-2 hover:bg-[#F7F7F5] rounded-lg transition-colors"
             aria-label="Cerrar"
           >
-            <X className="w-6 h-6 text-white" />
+            <X className="w-6 h-6 text-[#111318]" />
           </button>
 
           {selectedIndex !== null && (
             <div className="space-y-4">
-              <div className="bg-gradient-to-br from-[#334155]/50 to-[#0F172A]/50 h-96 rounded flex items-center justify-center border border-[#334155]">
+              <div className="bg-[#F7F7F5] h-96 rounded-xl flex items-center justify-center border border-[rgba(0,0,0,0.06)]">
                 <div className="text-center">
-                  <p className="text-white font-bold text-2xl tracking-[0.02em]">{projects[selectedIndex].title}</p>
-                  <p className="text-[#D97706] text-lg">· {projects[selectedIndex].neighborhood}</p>
+                  <p className="text-[#111318] font-bold text-2xl tracking-[0.02em]">{projects[selectedIndex].title}</p>
+                  <p className="text-[#E8751A] text-lg">- {projects[selectedIndex].neighborhood}</p>
                 </div>
               </div>
 
@@ -147,21 +149,21 @@ export function Gallery() {
                 <button
                   onClick={handlePrev}
                   disabled={selectedIndex === 0}
-                  className="p-2 hover:bg-[#1E293B] rounded disabled:opacity-50 transition-colors"
+                  className="p-2 hover:bg-[#F7F7F5] rounded-lg disabled:opacity-50 transition-colors"
                   aria-label="Anterior"
                 >
-                  <ChevronLeft className="w-6 h-6 text-white" />
+                  <ChevronLeft className="w-6 h-6 text-[#111318]" />
                 </button>
-                <span className="text-[#64748B]">
+                <span className="text-[#7A7A78]">
                   {selectedIndex + 1} / {projects.length}
                 </span>
                 <button
                   onClick={handleNext}
                   disabled={selectedIndex === projects.length - 1}
-                  className="p-2 hover:bg-[#1E293B] rounded disabled:opacity-50 transition-colors"
+                  className="p-2 hover:bg-[#F7F7F5] rounded-lg disabled:opacity-50 transition-colors"
                   aria-label="Siguiente"
                 >
-                  <ChevronRight className="w-6 h-6 text-white" />
+                  <ChevronRight className="w-6 h-6 text-[#111318]" />
                 </button>
               </div>
             </div>

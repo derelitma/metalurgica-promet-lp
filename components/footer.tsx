@@ -8,6 +8,9 @@ const footerLinks = {
     { label: 'Ventanas', href: '#servicios' },
     { label: 'Escaleras', href: '#servicios' },
     { label: 'Techos', href: '#servicios' },
+    { label: 'Corte de chapas', href: '#servicios' },
+    { label: 'Plegado de chapas', href: '#servicios' },
+    { label: 'Cilindrado de chapas', href: '#servicios' },
   ],
   empresa: [
     { label: 'Quiénes somos', href: '#nosotros' },
@@ -29,7 +32,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-[#0F172A] text-white steel-texture">
+    <footer className="bg-[#111318] text-white">
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
@@ -40,12 +43,12 @@ export function Footer() {
                 <span className="font-bold text-2xl text-white tracking-[0.1em]">
                   PROMET
                 </span>
-                <span className="text-[10px] text-[#64748B] -mt-1 tracking-[0.2em] uppercase">
+                <span className="text-[10px] text-white/50 -mt-1 tracking-[0.2em] uppercase">
                   Metalúrgica
                 </span>
               </div>
             </Link>
-            <p className="text-[#94A3B8] text-sm leading-relaxed mb-6">
+            <p className="text-white/50 text-sm leading-relaxed mb-6">
               60 años fabricando en La Plata. Calidad y palabra.
             </p>
             {/* Social Links */}
@@ -58,10 +61,10 @@ export function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 bg-[#1E293B] border border-[#334155] hover:border-[#D97706] hover:bg-[#D97706]/10 rounded flex items-center justify-center transition-all"
+                    className="w-10 h-10 bg-white/10 border border-white/10 hover:border-[#E8751A] hover:bg-[#E8751A]/10 rounded-lg flex items-center justify-center transition-all"
                     aria-label={social.label}
                   >
-                    <Icon className="h-5 w-5 text-[#94A3B8] group-hover:text-[#D97706]" />
+                    <Icon className="h-5 w-5 text-white hover:text-[#E8751A]" />
                   </a>
                 )
               })}
@@ -76,7 +79,7 @@ export function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-[#94A3B8] hover:text-[#D97706] text-sm transition-colors"
+                    className="text-white/70 hover:text-[#E8751A] hover:text-white text-sm transition-colors"
                   >
                     {link.label}
                   </a>
@@ -93,7 +96,7 @@ export function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-[#94A3B8] hover:text-[#D97706] text-sm transition-colors"
+                    className="text-white/70 hover:text-[#E8751A] hover:text-white text-sm transition-colors"
                   >
                     {link.label}
                   </a>
@@ -111,9 +114,9 @@ export function Footer() {
                   href="https://www.google.com/maps/place/Promet+Metal%C3%BArgica+Promet/@-34.9487225,-57.9993909,17z/data=!3m1!4b1!4m6!3m5!1s0x95a2e8042fdd17f9:0x54d73dc1cd711452!8m2!3d-34.9487225!4d-57.9993909!16s%2Fg%2F1w8wc65x"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-3 text-[#94A3B8] hover:text-[#D97706] text-sm transition-colors group"
+                  className="flex items-start gap-3 text-white/70 hover:text-white text-sm transition-colors group"
                 >
-                  <MapPin className="h-5 w-5 flex-shrink-0 mt-0.5 text-[#D97706]" />
+                  <MapPin className="h-5 w-5 flex-shrink-0 mt-0.5 text-[#E8751A]" />
                   <span className="group-hover:underline underline-offset-2">Calle 43 entre 148 y 149, La Plata</span>
                 </a>
               </li>
@@ -122,18 +125,18 @@ export function Footer() {
                   href="https://wa.me/5492213611947?text=Hola%20Promet!%20Vi%20su%20web%20y%20quiero%20pedir%20un%20presupuesto."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-[#94A3B8] hover:text-[#D97706] text-sm transition-colors"
+                  className="flex items-center gap-3 text-white/70 hover:text-white text-sm transition-colors"
                 >
-                  <MessageCircle className="h-5 w-5 flex-shrink-0 text-[#D97706]" />
+                  <MessageCircle className="h-5 w-5 flex-shrink-0 text-[#E8751A]" />
                   <span>+54 9 221 361-1947</span>
                 </a>
               </li>
               <li>
                 <a
                   href="mailto:metalurgicaprometlp@gmail.com"
-                  className="flex items-center gap-3 text-[#94A3B8] hover:text-[#D97706] text-sm transition-colors"
+                  className="flex items-center gap-3 text-white/70 hover:text-white text-sm transition-colors"
                 >
-                  <Mail className="h-5 w-5 flex-shrink-0 text-[#D97706]" />
+                  <Mail className="h-5 w-5 flex-shrink-0 text-[#E8751A]" />
                   <span>metalurgicaprometlp@gmail.com</span>
                 </a>
               </li>
@@ -143,22 +146,22 @@ export function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-[#334155]">
+      <div className="border-t border-white/10">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-[#64748B]">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/50">
             <div>
               <p>
                 &copy; {currentYear} Metalúrgica Promet. Todos los derechos reservados.
               </p>
-              <p className="italic text-xs text-[#475569] mt-1">
+              <p className="italic text-xs text-white/30 mt-1">
                 60 años en La Plata no se improvisan.
               </p>
             </div>
             <div className="flex items-center gap-6">
-              <a href="#" className="hover:text-[#D97706] transition-colors">
+              <a href="#" className="hover:text-[#E8751A] transition-colors">
                 Política de Privacidad
               </a>
-              <a href="#" className="hover:text-[#D97706] transition-colors">
+              <a href="#" className="hover:text-[#E8751A] transition-colors">
                 Términos y Condiciones
               </a>
             </div>

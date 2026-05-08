@@ -4,93 +4,65 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Premium Forged Steel Palette */
-  --steel-deep: #0F172A;        /* Deep Zinc - replaces pure black */
-  --steel-charcoal: #1E293B;    /* Charcoal Slate - secondary dark */
-  --steel-mid: #334155;         /* Steel Grey - dividers & secondary backgrounds */
-  --steel-light: #475569;       /* Lighter steel for text */
-  --amber-master: #D97706;      /* Master Amber - refined orange */
-  --amber-copper: #B45309;      /* Burned Copper - darker accent */
-  --amber-glow: rgba(217, 119, 6, 0.15); /* Glow effect */
+  /* Light Industrial Palette */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F7F7F5;
+  --bg-cards: #FFFFFF;
+  --bg-dark-accent: #111318;
   
-  /* Legacy Promet Brand Colors (updated) */
-  --promet-blue: #0F172A;
-  --promet-blue-light: #1E293B;
-  --promet-orange: #D97706;
+  --text-primary: #111318;
+  --text-body: #4A4A48;
+  --text-muted: #7A7A78;
+  
+  --accent: #E8751A;
+  --accent-hover: #C96318;
+  --whatsapp: #25D366;
+  
+  --border-light: rgba(0,0,0,0.08);
+  --border-card: rgba(0,0,0,0.06);
+  --card-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --card-shadow-hover: 0 8px 24px rgba(0,0,0,0.10);
+  
+  /* Legacy Promet Brand Colors */
+  --promet-orange: #E8751A;
   --promet-orange-light: #F59E0B;
-  --promet-gray-light: #F8FAFC;
-  --promet-gray-dark: #1E293B;
+  --promet-gray-light: #F7F7F5;
   --promet-white: #FFFFFF;
   
   /* Design System Tokens */
   --background: #FFFFFF;
-  --foreground: #1E293B;
+  --foreground: #111318;
   --card: #FFFFFF;
-  --card-foreground: #1E293B;
+  --card-foreground: #111318;
   --popover: #FFFFFF;
-  --popover-foreground: #1E293B;
-  --primary: #0F172A;
+  --popover-foreground: #111318;
+  --primary: #E8751A;
   --primary-foreground: #FFFFFF;
-  --secondary: #F1F5F9;
-  --secondary-foreground: #1E293B;
-  --muted: #F1F5F9;
-  --muted-foreground: #64748B;
-  --accent: #D97706;
+  --secondary: #F7F7F5;
+  --secondary-foreground: #111318;
+  --muted: #F7F7F5;
+  --muted-foreground: #7A7A78;
+  --accent: #E8751A;
   --accent-foreground: #FFFFFF;
   --destructive: #DC2626;
   --destructive-foreground: #FFFFFF;
-  --border: #E2E8F0;
-  --input: #E2E8F0;
-  --ring: #0F172A;
-  --chart-1: #0F172A;
-  --chart-2: #D97706;
-  --chart-3: #1E293B;
-  --chart-4: #F59E0B;
-  --chart-5: #334155;
-  --radius: 0.25rem;
+  --border: rgba(0,0,0,0.08);
+  --input: rgba(0,0,0,0.12);
+  --ring: #E8751A;
+  --chart-1: #E8751A;
+  --chart-2: #111318;
+  --chart-3: #F59E0B;
+  --chart-4: #4A4A48;
+  --chart-5: #7A7A78;
+  --radius: 0.75rem;
   --sidebar: #FFFFFF;
-  --sidebar-foreground: #1E293B;
-  --sidebar-primary: #0F172A;
+  --sidebar-foreground: #111318;
+  --sidebar-primary: #E8751A;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #F1F5F9;
-  --sidebar-accent-foreground: #1E293B;
-  --sidebar-border: #E2E8F0;
-  --sidebar-ring: #0F172A;
-}
-
-.dark {
-  --background: #0F172A;
-  --foreground: #F8FAFC;
-  --card: #1E293B;
-  --card-foreground: #F8FAFC;
-  --popover: #1E293B;
-  --popover-foreground: #F8FAFC;
-  --primary: #1E293B;
-  --primary-foreground: #FFFFFF;
-  --secondary: #334155;
-  --secondary-foreground: #F8FAFC;
-  --muted: #334155;
-  --muted-foreground: #94A3B8;
-  --accent: #D97706;
-  --accent-foreground: #FFFFFF;
-  --destructive: #DC2626;
-  --destructive-foreground: #FFFFFF;
-  --border: #334155;
-  --input: #334155;
-  --ring: #1E293B;
-  --chart-1: #1E293B;
-  --chart-2: #D97706;
-  --chart-3: #0F172A;
-  --chart-4: #F59E0B;
-  --chart-5: #F8FAFC;
-  --sidebar: #1E293B;
-  --sidebar-foreground: #F8FAFC;
-  --sidebar-primary: #1E293B;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #334155;
-  --sidebar-accent-foreground: #F8FAFC;
-  --sidebar-border: #334155;
-  --sidebar-ring: #1E293B;
+  --sidebar-accent: #F7F7F5;
+  --sidebar-accent-foreground: #111318;
+  --sidebar-border: rgba(0,0,0,0.08);
+  --sidebar-ring: #E8751A;
 }
 
 @theme inline {
@@ -100,21 +72,21 @@
   --font-display: var(--font-barlow-condensed), 'Barlow Condensed', system-ui, sans-serif;
   --font-body: var(--font-inter), 'Inter', system-ui, sans-serif;
   
-  /* Premium Forged Steel Colors */
-  --color-steel-deep: #0F172A;
-  --color-steel-charcoal: #1E293B;
-  --color-steel-mid: #334155;
-  --color-steel-light: #475569;
-  --color-amber-master: #D97706;
-  --color-amber-copper: #B45309;
+  /* Light Industrial Colors */
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F7F7F5;
+  --color-bg-dark: #111318;
+  --color-text-primary: #111318;
+  --color-text-body: #4A4A48;
+  --color-text-muted: #7A7A78;
+  --color-accent: #E8751A;
+  --color-accent-hover: #C96318;
+  --color-whatsapp: #25D366;
   
   /* Legacy Promet Brand Colors */
-  --color-promet-blue: #0F172A;
-  --color-promet-blue-light: #1E293B;
-  --color-promet-orange: #D97706;
+  --color-promet-orange: #E8751A;
   --color-promet-orange-light: #F59E0B;
-  --color-promet-gray-light: #F8FAFC;
-  --color-promet-gray-dark: #1E293B;
+  --color-promet-gray-light: #F7F7F5;
   --color-promet-white: #FFFFFF;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -128,8 +100,6 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -140,10 +110,10 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
   --radius-md: var(--radius);
-  --radius-lg: calc(var(--radius) + 2px);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -168,34 +138,6 @@
   section[id] {
     scroll-margin-top: 100px;
   }
-}
-
-/* Brushed Steel Texture Overlay */
-.steel-texture {
-  background-image: 
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 2px,
-      rgba(255,255,255,0.015) 2px,
-      rgba(255,255,255,0.015) 4px
-    );
-}
-
-/* Premium Amber Gradient */
-.amber-gradient {
-  background: linear-gradient(135deg, #D97706 0%, #B45309 100%);
-}
-
-/* Amber Glow Effect */
-.amber-glow {
-  box-shadow: 0 0 40px rgba(217, 119, 6, 0.15);
-}
-
-/* Premium Button 3D Effect */
-.btn-premium {
-  border-top: 1px solid rgba(255,255,255,0.2);
-  border-bottom: 1px solid rgba(0,0,0,0.15);
 }
 
 /* Custom Animations */
@@ -231,8 +173,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(217, 119, 6, 0.3); }
-  50% { box-shadow: 0 0 35px rgba(217, 119, 6, 0.5), 0 0 60px rgba(217, 119, 6, 0.2); }
+  0%, 100% { box-shadow: 0 0 20px rgba(232, 117, 26, 0.3); }
+  50% { box-shadow: 0 0 35px rgba(232, 117, 26, 0.5), 0 0 60px rgba(232, 117, 26, 0.2); }
 }
 
 .animate-pulse-glow {
@@ -246,9 +188,9 @@
 .animate-shimmer {
   background: linear-gradient(
     90deg,
-    rgba(217, 119, 6, 0.1) 25%,
-    rgba(217, 119, 6, 0.3) 50%,
-    rgba(217, 119, 6, 0.1) 75%
+    rgba(232, 117, 26, 0.1) 25%,
+    rgba(232, 117, 26, 0.3) 50%,
+    rgba(232, 117, 26, 0.1) 75%
   );
   background-size: 200% auto;
   animation: shimmer 3s linear infinite;

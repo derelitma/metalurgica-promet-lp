@@ -6,8 +6,8 @@ import { CheckCircle2, Shield, Clock, Zap, Award, HeartHandshake } from 'lucide-
 const reasons = [
   {
     icon: Shield,
-    title: 'Calidad Garantizada',
-    description: 'Procesos certificados y materiales de primera calidad. Cada trabajo cuenta con garantía escrita.',
+    title: 'Calidad que se nota',
+    description: 'Soldaduras con pulido, cerraduras de alta, ruedas de primera y terminaciones que otros no hacen. Lo barato sale caro. Lo nuestro dura.',
   },
   {
     icon: Clock,
@@ -59,19 +59,19 @@ function ReasonCard({ reason, index }: { reason: typeof reasons[0]; index: numbe
   return (
     <div
       ref={ref}
-      className={`flex gap-4 transition-all duration-700 ${
+      className={`flex gap-4 p-7 bg-[#F7F7F5] rounded-xl transition-all duration-700 ${
         isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
       }`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
-      <div className="flex-shrink-0 w-12 h-12 bg-[#D97706]/10 border border-[#D97706]/20 rounded flex items-center justify-center">
-        <Icon className="h-6 w-6 text-[#D97706]" />
+      <div className="flex-shrink-0 w-12 h-12 bg-white border border-[rgba(0,0,0,0.06)] rounded-lg flex items-center justify-center shadow-sm">
+        <Icon className="h-6 w-6 text-[#E8751A]" />
       </div>
       <div>
-        <h3 className="font-semibold text-lg text-[#1E293B] mb-1 tracking-[0.02em]">
+        <h3 className="font-semibold text-lg text-[#111318] mb-1 tracking-[0.02em]">
           {reason.title}
         </h3>
-        <p className="text-[#64748B] text-sm leading-relaxed">
+        <p className="text-[#4A4A48] text-sm leading-relaxed">
           {reason.description}
         </p>
       </div>
@@ -86,17 +86,20 @@ export function WhyUs() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Column - Content */}
           <div>
-            <span className="inline-block text-[#D97706] font-semibold text-[13px] uppercase tracking-[0.15em] mb-3">
+            <span className="inline-block text-[#E8751A] font-semibold text-[13px] uppercase tracking-[0.15em] mb-3">
               Por Qué Elegirnos
             </span>
-            <h2 className="font-bold text-3xl md:text-4xl lg:text-5xl text-[#1E293B] mb-6 text-balance tracking-[0.02em]">
+            <h2 
+              className="font-bold text-3xl md:text-4xl lg:text-5xl text-[#111318] mb-6 text-balance tracking-[0.02em]"
+              style={{ fontFamily: 'var(--font-barlow-condensed), Barlow Condensed, sans-serif' }}
+            >
               La diferencia está en los detalles
             </h2>
-            <p className="text-[#64748B] text-lg mb-10">
+            <p className="text-[#4A4A48] text-lg mb-10">
               No solo fabricamos piezas, construimos relaciones duraderas basadas en la confianza y la excelencia. 
               Cada proyecto es una oportunidad para demostrar nuestro compromiso.
             </p>
-            <div className="grid gap-6">
+            <div className="grid gap-4">
               {reasons.map((reason, index) => (
                 <ReasonCard key={reason.title} reason={reason} index={index} />
               ))}
@@ -105,22 +108,27 @@ export function WhyUs() {
 
           {/* Right Column - Visual */}
           <div className="relative">
-            <div className="relative aspect-[4/5] rounded overflow-hidden border border-[#E2E8F0]">
+            <div className="relative aspect-[4/5] rounded-xl overflow-hidden border border-[rgba(0,0,0,0.06)]">
               <img
                 src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1470"
                 alt="Taller metalúrgico Promet"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/70 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#111318]/70 to-transparent" />
             </div>
             {/* Premium Floating Badge */}
-            <div className="absolute -bottom-6 -left-6 md:bottom-8 md:-left-8 bg-white rounded border border-[#E2E8F0] shadow-xl p-6 max-w-[200px]">
-              <div className="font-black text-5xl bg-gradient-to-r from-[#D97706] to-[#B45309] bg-clip-text text-transparent mb-1">60</div>
-              <div className="text-[#1E293B] font-semibold tracking-[0.02em]">Años de</div>
-              <div className="text-[#1E293B] font-semibold tracking-[0.02em]">Excelencia</div>
+            <div className="absolute -bottom-6 -left-6 md:bottom-8 md:-left-8 bg-white rounded-xl border border-[rgba(0,0,0,0.06)] shadow-[0_4px_16px_rgba(0,0,0,0.08)] p-6 max-w-[200px]">
+              <div 
+                className="font-black text-5xl text-[#E8751A] mb-1"
+                style={{ fontFamily: 'var(--font-barlow-condensed), Barlow Condensed, sans-serif' }}
+              >
+                60
+              </div>
+              <div className="text-[#111318] font-semibold tracking-[0.02em]">Años de</div>
+              <div className="text-[#111318] font-semibold tracking-[0.02em]">Excelencia</div>
             </div>
             {/* Decorative corner element */}
-            <div className="absolute -top-3 -right-3 w-20 h-20 border-2 border-[#D97706]/30 rounded -z-10" />
+            <div className="absolute -top-3 -right-3 w-20 h-20 border-2 border-[#E8751A]/30 rounded-xl -z-10" />
           </div>
         </div>
       </div>
