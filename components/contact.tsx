@@ -314,14 +314,19 @@ export function Contact() {
                       aria-invalid={!!errors.servicio}
                     >
                       <option value="default">Seleccioná un servicio...</option>
-                      <option value="portones">Portones metálicos</option>
-                      <option value="puertas">Puertas metálicas</option>
-                      <option value="ventanas">Ventanas metálicas</option>
-                      <option value="escaleras">Escaleras metálicas</option>
-                      <option value="techos">Techos y estructuras</option>
-                      <option value="corte">Corte de chapas</option>
-                      <option value="plegado">Plegado de chapas</option>
-                      <option value="cilindrado">Cilindrado de chapas</option>
+                      <optgroup label="Para tu industria">
+                        <option value="corte">Corte de chapas</option>
+                        <option value="plegado">Plegado de chapas</option>
+                        <option value="cilindrado">Cilindrado de chapas</option>
+                        <option value="racks">Racks / Estanterías</option>
+                      </optgroup>
+                      <optgroup label="Para tu casa">
+                        <option value="portones">Portones metálicos</option>
+                        <option value="puertas">Puertas metálicas</option>
+                        <option value="ventanas">Ventanas metálicas</option>
+                        <option value="escaleras">Escaleras metálicas</option>
+                        <option value="techos">Techos y estructuras</option>
+                      </optgroup>
                       <option value="especiales">Trabajo especial</option>
                     </select>
                     {errors.servicio && (

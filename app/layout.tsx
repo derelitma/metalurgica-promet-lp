@@ -32,9 +32,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Metalúrgica Promet LP | Carpintería Metálica, Corte y Plegado de Chapas en La Plata | 60 años',
+  title: 'Metalúrgica Promet LP | Corte, Plegado y Cilindrado de Chapas en La Plata | Carpintería Metálica | 60 años',
   description:
-    'Fabricación de portones, puertas, ventanas, escaleras y techos metálicos. Corte, plegado y cilindrado de chapas. Más de 60 años en La Plata. Presupuesto gratis en 24hs.',
+    'Corte y plegado de chapas de 0.5mm a chapa 25. Carpintería metálica completa. Racks, portones, escaleras y techos. Más de 60 años en La Plata. Presupuesto en el día.',
   keywords: [
     'portones metálicos La Plata',
     'puertas metálicas',
@@ -67,9 +67,9 @@ export const metadata: Metadata = {
     locale: 'es_AR',
     url: 'https://metalurgicapromet.com.ar',
     siteName: 'Metalúrgica Promet LP',
-    title: 'Metalúrgica Promet LP | Carpintería Metálica, Corte y Plegado de Chapas en La Plata',
+    title: 'Metalúrgica Promet LP | Corte, Plegado y Cilindrado de Chapas en La Plata | Carpintería Metálica',
     description:
-      'Fabricación de portones, puertas, ventanas, escaleras y techos metálicos. Corte, plegado y cilindrado de chapas. 60 años de experiencia en La Plata.',
+      'Corte y plegado de chapas de 0.5mm a chapa 25. Carpintería metálica completa. Racks, portones, escaleras y techos. Más de 60 años en La Plata. Presupuesto en el día.',
     images: [
       {
         url: 'https://metalurgicapromet.com.ar/og-image.jpg',
@@ -208,6 +208,13 @@ const jsonLd = {
         itemOffered: {
           '@type': 'Service',
           name: 'Cilindrado de chapas',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Racks y estanterías metálicas',
         },
       },
     ],

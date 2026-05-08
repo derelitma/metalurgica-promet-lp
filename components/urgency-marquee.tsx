@@ -1,16 +1,15 @@
 export function UrgencyMarquee() {
   const items = [
+    '✦ Racks para Hipermercado Nini',
+    '✦ Rejas del Zoo de La Plata',
+    '✦ Cabinas de seguridad La Plata',
+    '✦ Corte y plegado para herreros',
+    '✦ Perfiles especiales para barcos',
     '◆ Portón entregado en City Bell',
     '◆ Escalera instalada en Villa Elisa',
     '◆ Techo terminado en Gonnet',
     '◆ Puerta blindada en La Plata Centro',
-    '◆ Ventanas en Berisso',
-    '◆ Portón corredizo en Ensenada',
     '◆ Estructura metálica en Los Hornos',
-    '◆ Escalera exterior en Tolosa',
-    '✦ Corte de chapas para industria',
-    '✦ Plegado CNC en La Plata',
-    '✦ Cilindrado a medida',
   ]
 
   return (

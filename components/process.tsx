@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { MessageSquare, FileText, Settings, CheckCircle } from 'lucide-react'
+import { MessageSquare, FileText, Settings, CheckCircle, Send, Calculator, Factory as FactoryIcon, Truck } from 'lucide-react'
 
 const steps = [
   {
@@ -27,6 +27,33 @@ const steps = [
     icon: CheckCircle,
     title: 'Entrega',
     description: 'Entregamos en tiempo y forma. Si algo no quedó como acordamos, lo resolvemos. Siempre.',
+  },
+]
+
+const herreroSteps = [
+  {
+    number: '1',
+    icon: Send,
+    title: 'Mandá tus medidas',
+    description: 'Por WhatsApp con las medidas justas y lo que necesitás.',
+  },
+  {
+    number: '2',
+    icon: Calculator,
+    title: 'Te cotizamos por kilo',
+    description: 'Te pasamos presupuesto estimativo en el día. Sin vueltas.',
+  },
+  {
+    number: '3',
+    icon: FactoryIcon,
+    title: 'Lo fabricamos',
+    description: 'Cortamos, plegamos y entregamos en 3-4 días según cantidad.',
+  },
+  {
+    number: '4',
+    icon: Truck,
+    title: 'Retirás o entregamos',
+    description: 'Lo tenés listo en el taller de Calle 43 o coordinamos envío.',
   },
 ]
 
@@ -113,8 +140,8 @@ export function Process() {
           </p>
         </div>
 
-        {/* Process Steps */}
-        <div className="relative">
+        {/* Residential Process Steps */}
+        <div className="relative mb-20">
           {/* Desktop: Horizontal dashed line */}
           <div className="hidden lg:block absolute top-12 left-0 right-0 h-0.5 border-t-2 border-dashed border-[#E8751A]/30 z-0" />
 
@@ -122,6 +149,35 @@ export function Process() {
             {steps.map((step, index) => (
               <ProcessStep key={step.number} step={step} index={index} />
             ))}
+          </div>
+        </div>
+
+        {/* Herrero Process Section */}
+        <div className="bg-[#F7F7F5] rounded-2xl p-8 md:p-12">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="inline-block bg-[#E8751A] text-white font-semibold text-[13px] uppercase tracking-[0.15em] px-4 py-2 rounded-full mb-4">
+              Para Herreros
+            </span>
+            <h3 
+              className="font-bold text-2xl md:text-3xl lg:text-4xl text-[#111318] mb-3 tracking-[0.02em]"
+              style={{ fontFamily: 'var(--font-barlow-condensed), Barlow Condensed, sans-serif' }}
+            >
+              ¿Sos herrero? Así trabajamos:
+            </h3>
+            <p className="text-[#4A4A48]">
+              Proceso ágil para profesionales. Cotizamos por kilo, entregamos rápido.
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Desktop: Horizontal dashed line */}
+            <div className="hidden lg:block absolute top-12 left-0 right-0 h-0.5 border-t-2 border-dashed border-[#E8751A]/30 z-0" />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4 relative z-10">
+              {herreroSteps.map((step, index) => (
+                <ProcessStep key={`herrero-${step.number}`} step={step} index={index} />
+              ))}
+            </div>
           </div>
         </div>
       </div>

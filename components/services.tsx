@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowRight, Home, Factory, Scissors, FoldVertical, RotateCw } from 'lucide-react';
+import { ArrowRight, Home, Factory, Scissors, FoldVertical, RotateCw, LayoutGrid } from 'lucide-react';
 
 // Residential services (existing)
 const residentialServices = [
@@ -49,26 +49,34 @@ const industrialServices = [
   {
     id: 'corte',
     title: 'Corte de chapas',
-    benefit: 'Precisión milimétrica.',
-    description: 'Corte de chapas de acero, inoxidable y aluminio en todos los espesores. Piezas únicas o producción en serie.',
+    benefit: 'Precisión en cada corte.',
+    description: 'Chapa de 0.5mm a 3,16cm (chapa 25). Acero, galvanizado, inoxidable y aluminio. Piezas únicas o producción en serie. Entrega en 3-4 días.',
     waMessage: 'Hola Promet! Necesito presupuesto para corte de chapas.',
     icon: Scissors,
   },
   {
     id: 'plegado',
     title: 'Plegado de chapas',
-    benefit: 'Ángulos exactos.',
-    description: 'Plegado CNC y manual para perfiles, bandejas, gabinetes y piezas industriales. Cualquier ángulo, cualquier espesor.',
+    benefit: 'Ángulos exactos. Calidad Promet.',
+    description: 'Plegado de marcos, perfiles, canaletas, bandejas y piezas industriales. Encastre de perfilería para marcos en cantidad. Calidad de terminación que nos diferencia.',
     waMessage: 'Hola Promet! Necesito presupuesto para plegado de chapas.',
     icon: FoldVertical,
   },
   {
     id: 'cilindrado',
     title: 'Cilindrado de chapas',
-    benefit: 'Curvas perfectas.',
-    description: 'Cilindrado y curvado de chapas para tanques, conductos, caños y piezas cilíndricas. Diámetros a medida.',
+    benefit: 'Curvas perfectas a medida.',
+    description: 'Cilindrado para tanques, conductos, caños y piezas cilíndricas. Diámetros a medida sobre especificación del cliente.',
     waMessage: 'Hola Promet! Necesito presupuesto para cilindrado de chapas.',
     icon: RotateCw,
+  },
+  {
+    id: 'racks',
+    title: 'Racks y estanterías',
+    benefit: 'Soluciones de almacenamiento que no fallan.',
+    description: 'Baldas, racks y estanterías metálicas para comercios, galpones y depósitos. Fabricación a medida con materiales de primera.',
+    waMessage: 'Hola Promet! Necesito presupuesto para racks o estanterías.',
+    icon: LayoutGrid,
   },
 ];
 
@@ -166,7 +174,7 @@ function ServiceCard({
 type Division = 'residential' | 'industrial';
 
 export function Services() {
-  const [activeDivision, setActiveDivision] = useState<Division>('residential');
+  const [activeDivision, setActiveDivision] = useState<Division>('industrial');
 
   return (
     <section id="servicios" className="py-20 md:py-32 bg-white relative overflow-hidden">
@@ -250,7 +258,7 @@ export function Services() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
             >
               {industrialServices.map((service, index) => (
                 <ServiceCard key={service.id} service={service} index={index} />

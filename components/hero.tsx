@@ -99,7 +99,7 @@ export function Hero() {
             className="text-base sm:text-lg md:text-xl text-white/70 mb-10 max-w-2xl mx-auto leading-relaxed"
             style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}
           >
-            Carpintería metálica y procesamiento de chapas a medida. Corte, plegado, cilindrado y fabricación completa. Presupuesto gratis en menos de 24hs.
+            Corte, plegado y cilindrado de chapas para herreros e industria. Carpintería metálica completa. 60 años en La Plata. Presupuesto en el día.
           </motion.p>
 
           {/* CTA Buttons */}

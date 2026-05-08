@@ -8,6 +8,7 @@ import { Gallery } from '@/components/gallery'
 import { ConversionBand } from '@/components/conversion-band'
 import { Process } from '@/components/process'
 import { Testimonials } from '@/components/testimonials'
+import { Clients } from '@/components/clients'
 import { About } from '@/components/about'
 import { Contact } from '@/components/contact'
 import { Footer } from '@/components/footer'
@@ -30,6 +31,7 @@ export default function Home() {
         <ConversionBand />
         <Process />
         <Testimonials />
+        <Clients />
         <About />
         <Contact />
         <Footer />

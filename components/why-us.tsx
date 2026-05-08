@@ -6,8 +6,8 @@ import { CheckCircle2, Shield, Clock, Zap, Award, HeartHandshake } from 'lucide-
 const reasons = [
   {
     icon: Shield,
-    title: 'Calidad Garantizada',
-    description: 'Procesos certificados y materiales de primera calidad. Cada trabajo cuenta con garantía escrita.',
+    title: 'Calidad que se nota',
+    description: 'Soldaduras con pulido, cerraduras de alta, ruedas de primera y terminaciones que otros no hacen. Lo barato sale caro. Lo nuestro dura.',
   },
   {
     icon: Clock,
