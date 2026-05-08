@@ -38,10 +38,10 @@ function AnimatedNumber({ value, duration = 2000 }: { value: number; duration?: 
 
 export function Stats() {
   return (
-    <section className="py-20 md:py-32 bg-[#1E293B] relative overflow-hidden steel-texture">
+    <section className="py-20 md:py-32 bg-[#F7F7F5] relative overflow-hidden">
       {/* Subtle decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#334155] to-transparent" />
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#334155] to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[rgba(0,0,0,0.08)] to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[rgba(0,0,0,0.08)] to-transparent" />
       
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
@@ -55,12 +55,15 @@ export function Stats() {
               className="text-center md:text-left"
             >
               <div className="mb-4">
-                <span className="text-7xl md:text-9xl font-black bg-gradient-to-r from-[#D97706] to-[#F59E0B] bg-clip-text text-transparent leading-none">
+                <span 
+                  className="text-7xl md:text-9xl font-black text-[#E8751A] leading-none"
+                  style={{ fontFamily: 'var(--font-barlow-condensed), Barlow Condensed, sans-serif', fontWeight: 900 }}
+                >
                   +<AnimatedNumber value={60} />
                 </span>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-2 tracking-[0.02em]">años en La Plata</h3>
-              <p className="text-[#64748B] italic text-sm">
+              <h3 className="text-xl md:text-2xl font-bold text-[#111318] mb-2 tracking-[0.02em]">años en La Plata</h3>
+              <p className="text-[#7A7A78] italic text-sm">
                 3 generaciones, mismo apellido, misma calle
               </p>
             </motion.div>
@@ -74,12 +77,15 @@ export function Stats() {
               className="text-center md:text-left"
             >
               <div className="mb-4">
-                <span className="text-7xl md:text-9xl font-black bg-gradient-to-r from-[#D97706] to-[#F59E0B] bg-clip-text text-transparent leading-none">
+                <span 
+                  className="text-7xl md:text-9xl font-black text-[#E8751A] leading-none"
+                  style={{ fontFamily: 'var(--font-barlow-condensed), Barlow Condensed, sans-serif', fontWeight: 900 }}
+                >
                   +<AnimatedNumber value={12000} duration={2500} />
                 </span>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-2 tracking-[0.02em]">Obras entregadas</h3>
-              <p className="text-[#64748B] italic text-sm">
+              <h3 className="text-xl md:text-2xl font-bold text-[#111318] mb-2 tracking-[0.02em]">Obras entregadas</h3>
+              <p className="text-[#7A7A78] italic text-sm">
                 Trabajos realizados en La Plata y zona desde 1960
               </p>
             </motion.div>

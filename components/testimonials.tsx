@@ -60,20 +60,20 @@ function TestimonialCard({ testimonial, index }: { testimonial: typeof testimoni
       }`}
       style={{ transitionDelay: `${index * 150}ms` }}
     >
-      <Card className="h-full bg-white border border-[#E2E8F0] hover:border-[#D97706]/30 shadow-sm hover:shadow-lg transition-all rounded">
+      <Card className="h-full bg-white border border-[rgba(0,0,0,0.06)] border-l-4 border-l-[#E8751A] hover:shadow-[0_8px_24px_rgba(0,0,0,0.10)] shadow-[0_2px_12px_rgba(0,0,0,0.06)] transition-all rounded-xl">
         <CardContent className="p-6 md:p-8">
           {/* Quote icon */}
-          <Quote className="h-10 w-10 text-[#D97706]/20 mb-4" />
+          <Quote className="h-10 w-10 text-[#E8751A]/20 mb-4" />
 
           {/* Rating */}
           <div className="flex gap-1 mb-4">
             {Array.from({ length: testimonial.rating }).map((_, i) => (
-              <Star key={i} className="h-5 w-5 text-[#D97706] fill-[#D97706]" />
+              <Star key={i} className="h-5 w-5 text-[#E8751A] fill-[#E8751A]" />
             ))}
           </div>
 
           {/* Content */}
-          <p className="text-[#1E293B] leading-relaxed mb-6 italic">
+          <p className="text-[#111318] leading-relaxed mb-6 italic">
             &ldquo;{testimonial.content}&rdquo;
           </p>
 
@@ -82,16 +82,16 @@ function TestimonialCard({ testimonial, index }: { testimonial: typeof testimoni
             <img
               src={testimonial.image}
               alt={testimonial.name}
-              className="w-14 h-14 rounded object-cover border border-[#E2E8F0]"
+              className="w-14 h-14 rounded-xl object-cover border border-[rgba(0,0,0,0.06)]"
             />
             <div>
-              <div className="font-semibold text-[#1E293B] tracking-[0.02em]">
+              <div className="font-semibold text-[#111318] tracking-[0.02em]">
                 {testimonial.name}
               </div>
-              <div className="text-sm text-[#64748B]">
+              <div className="text-sm text-[#4A4A48]">
                 {testimonial.role}
               </div>
-              <div className="text-sm text-[#D97706] font-medium">
+              <div className="text-sm text-[#E8751A] font-medium">
                 {testimonial.company}
               </div>
             </div>
@@ -104,17 +104,20 @@ function TestimonialCard({ testimonial, index }: { testimonial: typeof testimoni
 
 export function Testimonials() {
   return (
-    <section id="testimonios" className="py-20 md:py-28 bg-white">
+    <section id="testimonios" className="py-20 md:py-28 bg-[#F7F7F5]">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block text-[#D97706] font-semibold text-[13px] uppercase tracking-[0.15em] mb-3">
+          <span className="inline-block text-[#E8751A] font-semibold text-[13px] uppercase tracking-[0.15em] mb-3">
             Testimonios
           </span>
-          <h2 className="font-bold text-3xl md:text-4xl lg:text-5xl text-[#1E293B] mb-4 text-balance tracking-[0.02em]">
+          <h2 
+            className="font-bold text-3xl md:text-4xl lg:text-5xl text-[#111318] mb-4 text-balance tracking-[0.02em]"
+            style={{ fontFamily: 'var(--font-barlow-condensed), Barlow Condensed, sans-serif' }}
+          >
             Lo que dicen nuestros clientes
           </h2>
-          <p className="text-[#64748B] text-lg">
+          <p className="text-[#4A4A48] text-lg">
             La confianza de nuestros clientes es nuestro mayor activo. Más de 500 empresas nos eligen.
           </p>
         </div>

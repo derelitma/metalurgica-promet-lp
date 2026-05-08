@@ -15,13 +15,13 @@ export function Hero() {
 
   return (
     <section
-      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-28 steel-texture"
+      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-28"
       style={{
-        backgroundColor: '#0F172A',
+        backgroundColor: '#111318',
         backgroundImage: `
-          linear-gradient(rgba(217,119,6,0.03) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(217,119,6,0.03) 1px, transparent 1px),
-          radial-gradient(ellipse 80% 60% at 50% 40%, rgba(30,41,59,0.5) 0%, transparent 70%)
+          linear-gradient(rgba(232,117,26,0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(232,117,26,0.03) 1px, transparent 1px),
+          radial-gradient(ellipse 80% 60% at 50% 40%, rgba(30,30,30,0.5) 0%, transparent 70%)
         `,
         backgroundSize: '60px 60px, 60px 60px, 100% 100%',
       }}
@@ -30,27 +30,27 @@ export function Hero() {
       <div 
         className="absolute top-20 right-0 w-[400px] h-[400px] opacity-[0.06] pointer-events-none"
         style={{
-          background: 'radial-gradient(circle at 70% 30%, #D97706 0%, #F59E0B 20%, transparent 60%)',
+          background: 'radial-gradient(circle at 70% 30%, #E8751A 0%, #F59E0B 20%, transparent 60%)',
           filter: 'blur(40px)',
         }}
       />
       <div 
         className="absolute bottom-40 left-0 w-[300px] h-[300px] opacity-[0.04] pointer-events-none"
         style={{
-          background: 'radial-gradient(circle at 30% 70%, #D97706 0%, transparent 50%)',
+          background: 'radial-gradient(circle at 30% 70%, #E8751A 0%, transparent 50%)',
           filter: 'blur(30px)',
         }}
       />
 
       {/* Subtle floating geometric elements */}
       <motion.div
-        className="absolute top-32 right-16 w-40 h-40 border border-[#334155]/20 rounded hidden lg:block"
+        className="absolute top-32 right-16 w-40 h-40 border border-white/10 rounded hidden lg:block"
         animate={{ rotate: 360 }}
         transition={{ duration: 50, repeat: Infinity, ease: 'linear' }}
         style={{ transform: 'rotate(45deg)' }}
       />
       <motion.div
-        className="absolute bottom-32 left-16 w-24 h-24 border border-[#D97706]/10 rounded hidden lg:block"
+        className="absolute bottom-32 left-16 w-24 h-24 border border-[#E8751A]/10 rounded hidden lg:block"
         animate={{ rotate: -360 }}
         transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
       />
@@ -65,7 +65,7 @@ export function Hero() {
             transition={{ delay: 0.2 }}
             className="inline-block mb-6"
           >
-            <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1E293B]/80 border border-[#334155] text-[#D97706] font-semibold text-[13px] tracking-[0.08em] uppercase shadow-[0_0_30px_rgba(217,119,6,0.1)] backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 border border-white/20 text-[#E8751A] font-semibold text-[13px] tracking-[0.08em] uppercase shadow-[0_0_30px_rgba(232,117,26,0.1)] backdrop-blur-sm">
               <span className="text-[#F59E0B]">&#10022;</span>
               Tradición y Calidad desde 1960
             </span>
@@ -85,22 +85,21 @@ export function Hero() {
             }}
           >
             Tu casa segura, con el respaldo de{' '}
-            <span className="bg-gradient-to-r from-[#D97706] to-[#F59E0B] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#E8751A] to-[#F59E0B] bg-clip-text text-transparent">
               60 años
             </span>{' '}
             de herrería en La Plata.
           </motion.h1>
 
-          {/* Sub-headline */}
+          {/* Sub-headline - Updated to include industrial services */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-base sm:text-lg md:text-xl text-[#94A3B8] mb-10 max-w-2xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-white/70 mb-10 max-w-2xl mx-auto leading-relaxed"
             style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}
           >
-            Fabricación e instalación de portones, escaleras y techos a medida. 
-            Recibí tu presupuesto hoy mismo en menos de 24hs.
+            Carpintería metálica y procesamiento de chapas a medida. Corte, plegado, cilindrado y fabricación completa. Presupuesto gratis en menos de 24hs.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -115,7 +114,7 @@ export function Hero() {
               href={wa.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative px-8 py-4 bg-gradient-to-r from-[#D97706] to-[#B45309] hover:from-[#F59E0B] hover:to-[#D97706] text-white font-bold rounded tracking-[0.05em] uppercase text-sm transition-all btn-premium inline-flex items-center justify-center gap-2 animate-pulse-glow"
+              className="group relative px-8 py-4 bg-[#E8751A] hover:bg-[#C96318] text-white font-bold rounded-lg tracking-[0.05em] uppercase text-sm transition-all inline-flex items-center justify-center gap-2 animate-pulse-glow"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               data-cta
@@ -131,7 +130,7 @@ export function Hero() {
                 const trabajosSection = document.getElementById('trabajos');
                 trabajosSection?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="px-8 py-4 border border-white/30 hover:border-[#D97706] text-white hover:text-[#D97706] font-bold rounded tracking-[0.05em] uppercase text-sm transition-all bg-transparent backdrop-blur-sm"
+              className="px-8 py-4 border border-white/30 hover:border-[#E8751A] text-white hover:text-[#E8751A] font-bold rounded-lg tracking-[0.05em] uppercase text-sm transition-all bg-transparent backdrop-blur-sm"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -147,9 +146,9 @@ export function Hero() {
             className="flex flex-wrap justify-center gap-6 md:gap-10 mb-8"
           >
             {trustIndicators.map((item, index) => (
-              <div key={index} className="flex items-center gap-2 text-[#94A3B8]">
-                <div className="w-5 h-5 rounded-full bg-[#1E293B] border border-[#334155] flex items-center justify-center">
-                  <item.icon className="w-3 h-3 text-[#D97706]" />
+              <div key={index} className="flex items-center gap-2 text-white/70">
+                <div className="w-5 h-5 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
+                  <item.icon className="w-3 h-3 text-[#E8751A]" />
                 </div>
                 <span className="text-xs sm:text-sm font-medium tracking-wide">{item.text}</span>
               </div>
@@ -163,9 +162,9 @@ export function Hero() {
             transition={{ delay: 1.1 }}
             className="inline-block"
           >
-            <div className="px-4 py-2 border border-[#334155]/50 rounded bg-[#0F172A]/50 backdrop-blur-sm">
-              <p className="text-[11px] sm:text-xs text-[#64748B] tracking-[0.1em] uppercase">
-                <span className="text-[#D97706]">Garantía Promet:</span> Tres generaciones fabricando en Calle 43.
+            <div className="px-4 py-2 border border-white/20 rounded bg-white/5 backdrop-blur-sm">
+              <p className="text-[11px] sm:text-xs text-white/50 tracking-[0.1em] uppercase">
+                <span className="text-[#E8751A]">Garantía Promet:</span> Tres generaciones fabricando en Calle 43.
               </p>
             </div>
           </motion.div>
@@ -179,7 +178,7 @@ export function Hero() {
         animate={{ y: [0, 6, 0] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
       >
-        <ChevronDown className="w-5 h-5 text-[#475569]" />
+        <ChevronDown className="w-5 h-5 text-white/40" />
       </motion.div>
     </section>
   );

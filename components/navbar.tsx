@@ -73,31 +73,31 @@ export function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navHidden ? '-translate-y-full' : 'translate-y-0'}`}
       role="banner"
     >
-      {/* Premium Eyebrow Bar - Amber Gradient */}
-      <div className="bg-gradient-to-r from-[#D97706] to-[#B45309] text-white text-center py-1.5">
+      {/* Premium Eyebrow Bar - Orange */}
+      <div className="bg-[#E8751A] text-white text-center py-1.5">
         <p className="text-[13px] font-medium tracking-[0.05em]" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
           Respondemos hoy. Presupuestos en menos de 24hs.
         </p>
       </div>
       
-      {/* Main Navigation - Deep Zinc with Steel Texture */}
+      {/* Main Navigation - Transparent over hero, white on scroll */}
       <div
-        className={`transition-all duration-300 steel-texture ${
+        className={`transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#0F172A]/98 backdrop-blur-sm shadow-lg py-2'
-            : 'bg-[#0F172A]/90 backdrop-blur-sm py-3'
+            ? 'bg-white/98 backdrop-blur-sm shadow-[0_1px_4px_rgba(0,0,0,0.04)] border-b border-[rgba(0,0,0,0.08)] py-2'
+            : 'bg-transparent py-3'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-14">
             {/* Logo */}
             <Link href="#" className="flex items-center gap-3 z-10">
-              <div className="w-10 h-10 bg-gradient-to-br from-[#D97706] to-[#B45309] rounded flex items-center justify-center shadow-lg">
+              <div className="w-10 h-10 bg-[#E8751A] rounded flex items-center justify-center shadow-lg">
                 <span className="text-white font-bold text-lg">P</span>
               </div>
               <div className="hidden sm:block">
-                <p className="text-white font-bold text-sm tracking-[0.1em]">PROMET</p>
-                <p className="text-[#64748B] text-[10px] tracking-[0.15em]">DESDE 1960</p>
+                <p className={`font-bold text-sm tracking-[0.1em] transition-colors ${isScrolled ? 'text-[#111318]' : 'text-white'}`}>PROMET</p>
+                <p className={`text-[10px] tracking-[0.15em] transition-colors ${isScrolled ? 'text-[#7A7A78]' : 'text-white/60'}`}>DESDE 1960</p>
               </div>
             </Link>
 
@@ -109,27 +109,29 @@ export function Navbar() {
                   href={link.href}
                   className={`text-[13px] font-semibold uppercase tracking-[0.1em] transition-all relative ${
                     activeSection === link.id
-                      ? 'text-[#D97706]'
-                      : 'text-[#94A3B8] hover:text-white'
+                      ? 'text-[#E8751A]'
+                      : isScrolled
+                        ? 'text-[#4A4A48] hover:text-[#111318]'
+                        : 'text-white/80 hover:text-white'
                   }`}
                   aria-label={`Navegar a ${link.label}`}
                   aria-current={activeSection === link.id ? 'page' : undefined}
                 >
                   {link.label}
                   {activeSection === link.id && (
-                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-[#D97706] rounded-full" />
+                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-[#E8751A] rounded-full" />
                   )}
                 </a>
               ))}
             </nav>
 
-            {/* Desktop CTA - Premium Button */}
+            {/* Desktop CTA - Always Orange */}
             <div className="hidden md:flex items-center gap-4">
               <a
                 href={wa.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gradient-to-r from-[#D97706] to-[#B45309] hover:from-[#F59E0B] hover:to-[#D97706] text-white px-6 py-2.5 rounded font-bold text-[13px] uppercase tracking-[0.05em] transition-all btn-premium shadow-lg hover:shadow-[0_0_20px_rgba(217,119,6,0.3)]"
+                className="bg-[#E8751A] hover:bg-[#C96318] text-white px-6 py-2.5 rounded-lg font-bold text-[13px] uppercase tracking-[0.05em] transition-all shadow-lg hover:shadow-[0_0_20px_rgba(232,117,26,0.3)]"
                 data-cta
                 aria-label={wa.message}
               >
@@ -141,7 +143,7 @@ export function Navbar() {
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild className="md:hidden">
                 <button
-                  className="text-white p-2"
+                  className={`p-2 transition-colors ${isScrolled ? 'text-[#111318]' : 'text-white'}`}
                   aria-label="Abrir menú de navegación"
                   aria-expanded={isOpen}
                 >
@@ -151,7 +153,7 @@ export function Navbar() {
 
               <SheetContent
                 side="right"
-                className="bg-[#0F172A]/98 border-l border-[#334155] backdrop-blur-xl p-0 steel-texture"
+                className="bg-white border-l border-[rgba(0,0,0,0.08)] p-0"
                 aria-label="Menú de navegación"
               >
                 <SheetTitle className="sr-only">Menú de Promet</SheetTitle>
@@ -162,7 +164,7 @@ export function Navbar() {
                       <a
                         key={link.id}
                         href={link.href}
-                        className="text-white font-bold text-2xl uppercase tracking-[0.1em] transition-colors hover:text-[#D97706] animate-fade-in-up"
+                        className="text-[#111318] font-bold text-2xl uppercase tracking-[0.1em] transition-colors hover:text-[#E8751A] animate-fade-in-up"
                         style={{ animationDelay: `${i * 0.08}s` }}
                         onClick={() => setIsOpen(false)}
                         aria-label={`Navegar a ${link.label}`}
@@ -172,25 +174,25 @@ export function Navbar() {
                     ))}
                   </nav>
 
-                  <div className="border-t border-[#334155] pt-6 space-y-4">
+                  <div className="border-t border-[rgba(0,0,0,0.08)] pt-6 space-y-4">
                     <div>
-                      <p className="text-[#64748B] text-xs uppercase tracking-[0.15em] mb-2">
+                      <p className="text-[#7A7A78] text-xs uppercase tracking-[0.15em] mb-2">
                         Encontranos en
                       </p>
-                      <p className="text-white font-medium text-sm">
+                      <p className="text-[#111318] font-medium text-sm">
                         Calle 43 e/ 148 y 149, La Plata
                       </p>
                     </div>
 
                     <div>
-                      <p className="text-[#64748B] text-xs uppercase tracking-[0.15em] mb-2">
+                      <p className="text-[#7A7A78] text-xs uppercase tracking-[0.15em] mb-2">
                         WhatsApp
                       </p>
                       <a
                         href="https://wa.me/5492213611947?text=Hola%20Promet!%20Vi%20su%20web%20y%20quiero%20pedir%20un%20presupuesto."
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-white font-medium text-sm hover:text-[#D97706] transition-colors"
+                        className="text-[#111318] font-medium text-sm hover:text-[#E8751A] transition-colors"
                         aria-label="Abrir chat de WhatsApp"
                       >
                         +54 9 221 361-1947
@@ -201,7 +203,7 @@ export function Navbar() {
                       href={wa.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block w-full bg-gradient-to-r from-[#D97706] to-[#B45309] text-white py-3 rounded font-bold uppercase text-sm tracking-[0.05em] transition-all text-center mt-6 btn-premium"
+                      className="block w-full bg-[#E8751A] hover:bg-[#C96318] text-white py-3 rounded-lg font-bold uppercase text-sm tracking-[0.05em] transition-all text-center mt-6"
                       data-cta
                       onClick={() => setIsOpen(false)}
                       aria-label={wa.message}

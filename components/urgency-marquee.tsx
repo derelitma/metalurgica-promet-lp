@@ -8,10 +8,13 @@ export function UrgencyMarquee() {
     '◆ Portón corredizo en Ensenada',
     '◆ Estructura metálica en Los Hornos',
     '◆ Escalera exterior en Tolosa',
+    '✦ Corte de chapas para industria',
+    '✦ Plegado CNC en La Plata',
+    '✦ Cilindrado a medida',
   ]
 
   return (
-    <div className="bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#D97706] overflow-hidden py-3 border-t border-b border-[#B45309]/50">
+    <div className="bg-[#E8751A] overflow-hidden py-3">
       <div className="animate-marquee whitespace-nowrap flex" style={{ animationDuration: '45s' }}>
         {[...items, ...items, ...items].map((item, index) => (
           <span

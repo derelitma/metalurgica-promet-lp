@@ -63,7 +63,7 @@ function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) 
       {!isLast && (
         <div className="lg:hidden absolute top-[6.5rem] left-1/2 -translate-x-1/2 w-0.5 h-16 overflow-hidden">
           <div 
-            className={`w-full border-l-2 border-dashed border-[#334155] h-full transition-all duration-1000 ${
+            className={`w-full border-l-2 border-dashed border-[#E8751A]/30 h-full transition-all duration-1000 ${
               isVisible ? 'opacity-100' : 'opacity-0'
             }`}
             style={{ transitionDelay: `${index * 150 + 300}ms` }}
@@ -74,18 +74,18 @@ function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) 
       <div className="flex flex-col items-center text-center">
         {/* Premium Icon Container */}
         <div className="relative mb-4">
-          <div className="w-24 h-24 bg-[#0F172A] border border-[#334155] rounded flex items-center justify-center shadow-lg">
-            <Icon className="h-10 w-10 text-[#D97706]" />
+          <div className="w-24 h-24 bg-white border border-[rgba(0,0,0,0.06)] rounded-xl flex items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+            <Icon className="h-10 w-10 text-[#E8751A]" />
           </div>
-          <span className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-[#D97706] to-[#B45309] rounded flex items-center justify-center text-white font-bold text-sm shadow-lg">
+          <span className="absolute -top-2 -right-2 w-8 h-8 bg-[#E8751A] rounded-lg flex items-center justify-center text-white font-bold text-sm shadow-lg">
             {step.number}
           </span>
         </div>
 
-        <h3 className="font-bold text-xl text-[#1E293B] mb-2 tracking-[0.02em]">
+        <h3 className="font-bold text-xl text-[#111318] mb-2 tracking-[0.02em]">
           {step.title}
         </h3>
-        <p className="text-[#64748B] text-sm leading-relaxed max-w-[250px]">
+        <p className="text-[#4A4A48] text-sm leading-relaxed max-w-[250px]">
           {step.description}
         </p>
       </div>
@@ -95,17 +95,20 @@ function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) 
 
 export function Process() {
   return (
-    <section id="proceso" className="py-20 md:py-28 bg-[#F8FAFC]">
+    <section id="proceso" className="py-20 md:py-28 bg-white">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block text-[#D97706] font-semibold text-[13px] uppercase tracking-[0.15em] mb-3">
+          <span className="inline-block text-[#E8751A] font-semibold text-[13px] uppercase tracking-[0.15em] mb-3">
             Cómo Trabajamos
           </span>
-          <h2 className="font-bold text-3xl md:text-4xl lg:text-5xl text-[#1E293B] mb-4 text-balance tracking-[0.02em]">
+          <h2 
+            className="font-bold text-3xl md:text-4xl lg:text-5xl text-[#111318] mb-4 text-balance tracking-[0.02em]"
+            style={{ fontFamily: 'var(--font-barlow-condensed), Barlow Condensed, sans-serif' }}
+          >
             Un proceso simple y transparente
           </h2>
-          <p className="text-[#64748B] text-lg">
+          <p className="text-[#4A4A48] text-lg">
             Desde el primer contacto hasta la entrega final, te acompañamos en cada paso.
           </p>
         </div>
@@ -113,7 +116,7 @@ export function Process() {
         {/* Process Steps */}
         <div className="relative">
           {/* Desktop: Horizontal dashed line */}
-          <div className="hidden lg:block absolute top-12 left-0 right-0 h-0.5 border-t-2 border-dashed border-[#334155]/30 z-0" />
+          <div className="hidden lg:block absolute top-12 left-0 right-0 h-0.5 border-t-2 border-dashed border-[#E8751A]/30 z-0" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4 relative z-10">
             {steps.map((step, index) => (

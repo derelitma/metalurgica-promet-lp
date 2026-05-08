@@ -58,8 +58,8 @@ export function WhatsAppFAB() {
           }}
         />
 
-        {/* Main Button */}
-        <div className="relative w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transition-shadow">
+        {/* Main Button - Enhanced shadow for light background */}
+        <div className="relative w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-[0_4px_16px_rgba(37,211,102,0.3)] hover:shadow-[0_8px_24px_rgba(37,211,102,0.4)] transition-shadow">
           <motion.div
             animate={hasHovered ? {} : { y: [0, -6, 0] }}
             transition={{
@@ -73,7 +73,7 @@ export function WhatsAppFAB() {
         </div>
       </motion.a>
 
-      {/* Tooltip */}
+      {/* Tooltip - Dark on light page for visibility */}
       <AnimatePresence>
         {showTooltip && (
           <motion.div

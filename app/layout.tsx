@@ -32,9 +32,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Metalúrgica Promet LP | Portones, Puertas y Estructuras Metálicas a Medida',
+  title: 'Metalúrgica Promet LP | Carpintería Metálica, Corte y Plegado de Chapas en La Plata | 60 años',
   description:
-    'Fabricación e instalación de portones, puertas, ventanas, escaleras y techos metálicos a medida en La Plata. Más de 60 años de experiencia. Presupuesto gratis en menos de 24hs.',
+    'Fabricación de portones, puertas, ventanas, escaleras y techos metálicos. Corte, plegado y cilindrado de chapas. Más de 60 años en La Plata. Presupuesto gratis en 24hs.',
   keywords: [
     'portones metálicos La Plata',
     'puertas metálicas',
@@ -44,6 +44,12 @@ export const metadata: Metadata = {
     'estructuras metálicas',
     'carpintería metálica',
     'trabajos en metal La Plata',
+    'corte de chapas La Plata',
+    'plegado de chapas La Plata',
+    'cilindrado de chapas',
+    'procesamiento de chapas',
+    'plegadora La Plata',
+    'cilindrado industrial',
   ],
   authors: [{ name: 'Metalúrgica Promet LP' }],
   creator: 'Metalúrgica Promet LP',
@@ -61,9 +67,9 @@ export const metadata: Metadata = {
     locale: 'es_AR',
     url: 'https://metalurgicapromet.com.ar',
     siteName: 'Metalúrgica Promet LP',
-    title: 'Metalúrgica Promet LP | Portones y Estructuras Metálicas a Medida',
+    title: 'Metalúrgica Promet LP | Carpintería Metálica, Corte y Plegado de Chapas en La Plata',
     description:
-      'Fabricación e instalación de productos metálicos a medida. 60 años de experiencia en La Plata.',
+      'Fabricación de portones, puertas, ventanas, escaleras y techos metálicos. Corte, plegado y cilindrado de chapas. 60 años de experiencia en La Plata.',
     images: [
       {
         url: 'https://metalurgicapromet.com.ar/og-image.jpg',
@@ -89,7 +95,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#003366',
+  themeColor: '#FFFFFF',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -103,7 +109,7 @@ const jsonLd = {
   name: 'Metalúrgica Promet LP',
   alternateName: 'Promet La Plata',
   description:
-    'Fabricación e instalación de portones, puertas, ventanas, escaleras y techos metálicos a medida en La Plata. Más de 60 años de trayectoria.',
+    'Fabricación e instalación de portones, puertas, ventanas, escaleras y techos metálicos a medida. Corte, plegado y cilindrado de chapas. Más de 60 años de trayectoria en La Plata.',
   foundingDate: '1960',
   url: 'https://metalurgicapromet.com.ar',
   telephone: '+5492215551234',
@@ -146,7 +152,7 @@ const jsonLd = {
   ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Servicios de carpintería metálica',
+    name: 'Servicios de carpintería metálica y procesamiento de chapas',
     itemListElement: [
       {
         '@type': 'Offer',
@@ -183,6 +189,27 @@ const jsonLd = {
           name: 'Techos y estructuras metálicas',
         },
       },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Corte de chapas',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Plegado de chapas',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Cilindrado de chapas',
+        },
+      },
     ],
   },
   aggregateRating: {
@@ -212,12 +239,12 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${montserrat.variable} ${openSans.variable} ${barlowCondensed.variable} ${inter.variable} bg-[#0A0B0D]`}
+      className={`${montserrat.variable} ${openSans.variable} ${barlowCondensed.variable} ${inter.variable} bg-white`}
       suppressHydrationWarning
     >
       <head>
-        <meta name="theme-color" content="#003366" />
-        <meta name="color-scheme" content="dark" />
+        <meta name="theme-color" content="#FFFFFF" />
+        <meta name="color-scheme" content="light" />
         <meta name="geo.region" content="AR-B" />
         <meta name="geo.placename" content="La Plata" />
         <meta name="geo.position" content="-34.9214;-57.9545" />
@@ -232,7 +259,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`font-sans bg-[#0A0B0D] text-white antialiased`}
+        className={`font-sans bg-white text-[#111318] antialiased`}
         suppressHydrationWarning
       >
         {children}
