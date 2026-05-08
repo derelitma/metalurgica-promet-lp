@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { useWhatsApp } from '@/hooks/use-whatsapp';
@@ -74,8 +75,8 @@ export function Navbar() {
       role="banner"
     >
       {/* Premium Eyebrow Bar - Orange */}
-      <div className="bg-[#E8751A] text-white text-center py-1.5">
-        <p className="text-[13px] font-medium tracking-[0.05em]" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
+      <div className="bg-[#E8751A] text-white text-center py-2.5 md:py-1.5 px-4">
+        <p className="text-[11px] md:text-[13px] font-medium tracking-[0.05em] leading-relaxed" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
           Respondemos hoy. Presupuestos en menos de 24hs.
         </p>
       </div>
@@ -92,8 +93,14 @@ export function Navbar() {
           <div className="flex items-center justify-between h-14">
             {/* Logo */}
             <Link href="#" className="flex items-center gap-3 z-10">
-              <div className="w-10 h-10 bg-[#E8751A] rounded flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-lg">P</span>
+              <div className="w-10 h-10 relative flex-shrink-0">
+                <Image
+                  src="/logo.png"
+                  alt="Promet Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
               </div>
               <div className="hidden sm:block">
                 <p className={`font-bold text-sm tracking-[0.1em] transition-colors ${isScrolled ? 'text-[#111318]' : 'text-white'}`}>PROMET</p>

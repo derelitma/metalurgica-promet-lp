@@ -34,7 +34,12 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Metalúrgica Promet LP | Corte, Plegado y Cilindrado de Chapas en La Plata | Carpintería Metálica | 60 años',
   description:
-    'Corte y plegado de chapas de 0.5mm a chapa 25. Carpintería metálica completa. Racks, portones, escaleras y techos. Más de 60 años en La Plata. Presupuesto en el día.',
+    'Corte y plegado de chapas de 0.5mm a chapa 25. Carpintería metálica completa. Racks, portones, escaleras y techos. Más de 60 años en La Plata.',
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
   keywords: [
     'portones metálicos La Plata',
     'puertas metálicas',

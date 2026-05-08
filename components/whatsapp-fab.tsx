@@ -29,12 +29,12 @@ export function WhatsAppFAB() {
 
   return (
     <>
-      {/* Floating Action Button */}
+      {/* Floating Action Button - Higher on mobile to avoid conversion band overlap */}
       <motion.a
         href={wa.link}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-40 flex items-center justify-center"
+        className="fixed bottom-24 md:bottom-6 right-4 md:right-6 z-40 flex items-center justify-center"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ delay: 0.5, type: 'spring', stiffness: 100 }}
@@ -81,7 +81,7 @@ export function WhatsAppFAB() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-24 right-6 z-40 bg-[#111318] border border-[#25D366]/30 rounded-xl p-4 max-w-xs shadow-xl"
+            className="fixed bottom-40 md:bottom-24 right-4 md:right-6 z-40 bg-[#111318] border border-[#25D366]/30 rounded-xl p-4 max-w-xs shadow-xl"
           >
             <p className="text-white text-sm font-medium">
               ¿Necesitás ayuda?
